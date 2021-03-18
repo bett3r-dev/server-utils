@@ -4,7 +4,7 @@ import Async from 'crocks/Async';
 import safe from 'crocks/Maybe/safe';
 
 import {promiseToAsync} from './crocks'
-import { assoc, identity } from 'rambda';
+import { assoc } from 'rambda';
 
 export interface FetchResponse<T = Record<string, any>> extends Omit<Response,'body'> {
   body: T,
