@@ -1,7 +1,7 @@
 {
   "name": "server-utils",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "build/index.js",
   "license": "MIT",
   "scripts": {
     "test": "NODE_ENV=test nyc ts-mocha \"src/{,**/}*.test.ts\" --exit",

@@ -52,6 +52,3 @@ config
 *.zip
 *.tgz
 *.tar.gz
-
-
-build
