@@ -4,7 +4,6 @@ module.exports = function ( w ) {
   return {
     compilers: {
       '**/*.ts?(x)': w.compilers.typeScript({ isolatedModules: true, module:'commonjs'/* , useStandardDefaults: true */ })
-      // '**/*.ts?(x)': w.compilers.typeScript( tsconfig.compilerOptions )
     },
     files: [
       'src/{,**}/*.ts',
