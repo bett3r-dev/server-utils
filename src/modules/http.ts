@@ -3,7 +3,7 @@ import fetch, { RequestInit, Response } from 'node-fetch';
 import Async from 'crocks/Async';
 import safe from 'crocks/Maybe/safe';
 
-import {promiseToAsync} from './crocks'
+import {promiseToAsync} from 'bett3r-utils';
 import { assoc } from 'rambda';
 
 export interface FetchResponse<T = Record<string, any>> extends Omit<Response,'body'> {
@@ -14,7 +14,7 @@ const parseResponseBody = (response: Response, method: 'reject'| 'resolve') =>
    response.json()
     .then( body => Promise[method](assoc('body', body, response)))
 
-export const processFetchResponse = (response: Response) =>
+export const processFetchResponse = (response: Response): Async =>
   promiseToAsync(
     safe(isTrue, response.ok)
       .either(
