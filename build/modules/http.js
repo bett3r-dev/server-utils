@@ -7,14 +7,14 @@ exports.fetchAsync = exports.processFetchResponse = void 0;
 const crocks_1 = require("crocks");
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const safe_1 = __importDefault(require("crocks/Maybe/safe"));
-const crocks_2 = require("./crocks");
+const bett3r_utils_1 = require("bett3r-utils");
 const rambda_1 = require("rambda");
 const parseResponseBody = (response, method) => response.json()
     .then(body => Promise[method](rambda_1.assoc('body', body, response)));
-const processFetchResponse = (response) => crocks_2.promiseToAsync(safe_1.default(crocks_1.isTrue, response.ok)
+const processFetchResponse = (response) => bett3r_utils_1.promiseToAsync(safe_1.default(crocks_1.isTrue, response.ok)
     .either(() => parseResponseBody(response, 'reject'), () => parseResponseBody(response, 'resolve')));
 exports.processFetchResponse = processFetchResponse;
-const fetchAsync = (url, options) => crocks_2.promiseToAsync(node_fetch_1.default(url, {
+const fetchAsync = (url, options) => bett3r_utils_1.promiseToAsync(node_fetch_1.default(url, {
     method: 'get',
     headers: { 'content-type': 'application/json; charset=utf-8' },
     ...options,
