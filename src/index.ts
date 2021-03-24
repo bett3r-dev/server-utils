@@ -11,4 +11,15 @@ declare type modules = typeof import('./modules/modules');
 declare type process = typeof import('./modules/process');
 declare type timers = typeof import('./modules/timers');
 declare type tests = typeof import('./modules/tests');
-export declare interface Utils extends hashing, http, modules, process, timers, tests{}
+export declare interface ServerUtils extends hashing, http, modules, process, timers, tests {}
+
+import T from 'simple-transducers';
+export const Transducers = T
+export * from 'rambda';
+export * from 'bett3r-utils';
+declare type transducers = typeof import('simple-transducers').default;
+declare type rambda = typeof import('rambda');
+declare type utils = typeof import('bett3r-utils');
+export declare interface Utils extends rambda, utils, ServerUtils {
+  Transducers: transducers
+}

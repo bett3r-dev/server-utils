@@ -9,11 +9,19 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
 var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Transducers = void 0;
 __exportStar(require("./modules/hashing"), exports);
 __exportStar(require("./modules/http"), exports);
 __exportStar(require("./modules/modules"), exports);
 __exportStar(require("./modules/process"), exports);
 __exportStar(require("./modules/timers"), exports);
 __exportStar(require("./modules/tests"), exports);
+const simple_transducers_1 = __importDefault(require("simple-transducers"));
+exports.Transducers = simple_transducers_1.default;
+__exportStar(require("rambda"), exports);
+__exportStar(require("bett3r-utils"), exports);
 //# sourceMappingURL=index.js.map
