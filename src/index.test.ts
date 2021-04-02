@@ -27,5 +27,7 @@ describe("index", function () {
     assert.exists(mod.intervalAtEveryUTC)
     // tests
     assert.exists(mod.createFakeServer)
+    // types
+    assert.exists(mod.Queue)
   });
 });
