@@ -20,6 +20,7 @@ __exportStar(require("./modules/modules"), exports);
 __exportStar(require("./modules/process"), exports);
 __exportStar(require("./modules/timers"), exports);
 __exportStar(require("./modules/tests"), exports);
+__exportStar(require("./modules/types"), exports);
 const simple_transducers_1 = __importDefault(require("simple-transducers"));
 exports.Transducers = simple_transducers_1.default;
 __exportStar(require("rambda"), exports);
