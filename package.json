@@ -34,11 +34,5 @@
     "node-fetch": "^2.6.1",
     "rambda": "^6.5.3",
     "simple-transducers": "https://github.com/bett3r-dev/simple-transducers"
-  },
-  "nyc": {
-    "exclude": [
-      "src/fixtures/{,**}/*.ts",
-      "src/fixtures/{,**}/*.js"
-    ]
   }
 }
