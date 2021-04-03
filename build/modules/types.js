@@ -12,7 +12,7 @@ const Queue = (init) => {
         ap: data => values.map(x => x(data)),
         map: f => exports.Queue(values.map(f)),
         fold: f => values.map(f),
-        concat: other => exports.Queue(other.concat(values)),
+        concat: other => exports.Queue(other.fold(x => x).concat(values)),
         inspect: () => `Queue(${values})`
     };
 };
