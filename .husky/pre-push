@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn test && yarn build && git add build/* && git commit --amend --no-edit
+yarn test && yarn build && git add build/* && git commit -m '[add] Build'
