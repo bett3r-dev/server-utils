@@ -6,7 +6,8 @@
   "scripts": {
     "test": "NODE_ENV=test nyc ts-mocha \"src/{,**/}*.test.ts\" --exit",
     "build": "tsc -p tsconfig.build.json",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/chai": "^4.2.15",
@@ -20,6 +21,7 @@
     "crocks": "^0.12.4",
     "editorconfig": "^0.15.3",
     "eslint": "^7.22.0",
+    "husky": "^6.0.0",
     "mocha": "^8.3.2",
     "nyc": "^15.1.0",
     "sinon": "^9.2.4",
