@@ -16,7 +16,6 @@
     "@types/node": "^14.14.35",
     "@types/node-fetch": "^2.5.8",
     "@types/sinon": "^9.0.11",
-    "bett3r-utils": "https://github.com/bett3r-dev/bett3r-utils.git",
     "chai": "^4.3.4",
     "crocks": "^0.12.4",
     "editorconfig": "^0.15.3",
@@ -31,6 +30,7 @@
   },
   "dependencies": {
     "@tomasruizr/flyd": "0.3.4",
+    "bett3r-utils": "https://github.com/bett3r-dev/bett3r-utils.git",
     "node-fetch": "^2.6.1",
     "rambda": "^6.5.3",
     "simple-transducers": "https://github.com/bett3r-dev/simple-transducers"
