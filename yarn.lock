@@ -263,7 +263,7 @@
   resolved "https://registry.yarnpkg.com/@sinonjs/text-encoding/-/text-encoding-0.7.1.tgz#8da5c6530915653f3a1f38fd5f101d8c3f8079c5"
   integrity sha512-+iTbntw2IZPb/anVDbypzfQa+ay64MW0Zo8aJ8gZPWMMK6/OubMVb6lUPMagqjOPnmtauXnFCACVl3O7ogjeqQ==
 
-"@tomasruizr/flyd@0.3.4":
+"@tomasruizr/flyd@^0.3.4":
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/@tomasruizr/flyd/-/flyd-0.3.4.tgz#e1443ebd6a53db2cd6e264ade07cef1d27b867f7"
   integrity sha512-R6NO79yTg9Ym7DzoduRrtzlGmuoAyhj5+nbLRuhqUWskwmSwycL8OvWb5NmMATfooSx7GbRS/dzBhOEi+1TAQA==
@@ -448,7 +448,7 @@ balanced-match@^1.0.0:
 
 "bett3r-utils@https://github.com/bett3r-dev/bett3r-utils.git":
   version "1.0.0"
-  resolved "https://github.com/bett3r-dev/bett3r-utils.git#635222ff01f18b53fdc7e08340fe6500d57621c2"
+  resolved "https://github.com/bett3r-dev/bett3r-utils.git#e5223aa61bf60e4b1d37fed0208f2c53c945e3eb"
 
 binary-extensions@^2.0.0:
   version "2.2.0"
@@ -1682,10 +1682,10 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-rambda@^6.5.3:
-  version "6.5.3"
-  resolved "https://registry.yarnpkg.com/rambda/-/rambda-6.5.3.tgz#c83908b5c28ee39428ba049382ca040cbadf2f38"
-  integrity sha512-2CAMX4isM2QVOybyiKCCXlopEYIwWMc5nx6SD2PTFEgN4DLMJXjrwjlVsNOisMGeL2+akojuZEF7LuSHb2NMsQ==
+rambda@^6.7.0:
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/rambda/-/rambda-6.7.0.tgz#50322efdd23a108b61eb6ac4e0868d10dd95b4aa"
+  integrity sha512-qg2atEwhAS4ipYoNfggkIP7qBUbY2OqdW17n25VqZIz5YC1MIwSpIToQ7XacvqSCZz16efM8Y8QKLx+Js1Sybg==
 
 randombytes@^2.1.0:
   version "2.1.0"
