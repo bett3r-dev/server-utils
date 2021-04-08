@@ -14,7 +14,7 @@ const parseResponseBody = (response: Response, method: 'reject'| 'resolve') =>
    response.json()
     .then( body => Promise[method](assoc('body', body, response)))
 
-export const processFetchResponse = (response: Response): Async =>
+export const processFetchResponse = (response: Response): Async<Error, Response> =>
   promiseToAsync(
     safe(isTrue, response.ok)
       .either(
@@ -23,7 +23,7 @@ export const processFetchResponse = (response: Response): Async =>
       )
   )
 
-export const fetchAsync = ( url: string, options?: RequestInit ): Async =>
+export const fetchAsync = ( url: string, options?: RequestInit ): Async<Error, Response> =>
   promiseToAsync(fetch( url , {
     method: 'get',
     headers: { 'content-type': 'application/json; charset=utf-8' },

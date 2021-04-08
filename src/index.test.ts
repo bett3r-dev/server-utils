@@ -11,6 +11,7 @@ describe("index", function () {
     assert.exists(mod.Stream.stream)
     // bett3r-utils
     assert.exists(mod.ensureArray)
+    assert.exists(mod.ensureAsync)
     // rambda
     assert.exists(mod.compose)
 
