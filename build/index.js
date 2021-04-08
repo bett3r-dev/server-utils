@@ -14,6 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.reduce = exports.Transducers = void 0;
+const simple_transducers_1 = __importDefault(require("simple-transducers"));
+exports.Transducers = simple_transducers_1.default;
+__exportStar(require("rambda"), exports);
+var bett3r_utils_1 = require("bett3r-utils");
+Object.defineProperty(exports, "reduce", { enumerable: true, get: function () { return bett3r_utils_1.reduce; } });
+__exportStar(require("bett3r-utils"), exports);
 __exportStar(require("./modules/hashing"), exports);
 __exportStar(require("./modules/http"), exports);
 __exportStar(require("./modules/modules"), exports);
@@ -21,10 +27,4 @@ __exportStar(require("./modules/process"), exports);
 __exportStar(require("./modules/timers"), exports);
 __exportStar(require("./modules/tests"), exports);
 __exportStar(require("./modules/types"), exports);
-const simple_transducers_1 = __importDefault(require("simple-transducers"));
-exports.Transducers = simple_transducers_1.default;
-__exportStar(require("rambda"), exports);
-var bett3r_utils_1 = require("bett3r-utils");
-Object.defineProperty(exports, "reduce", { enumerable: true, get: function () { return bett3r_utils_1.reduce; } });
-__exportStar(require("bett3r-utils"), exports);
 //# sourceMappingURL=index.js.map

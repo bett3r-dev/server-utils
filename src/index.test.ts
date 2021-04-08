@@ -1,13 +1,15 @@
 import { assert } from "chai";
 import * as mod from "./index";
+import * as U from 'bett3r-utils';
 
 describe("index", function () {
   it("has elements from all the different modules", () => {
     // Transducers
     assert.exists(mod.Transducers);
     assert.exists(mod.Transducers.seq);
+
     // Stream
-    assert.exists(mod.Stream)
+    assert.exists(mod.Stream, 'Stream')
     assert.exists(mod.Stream.stream)
     // bett3r-utils
     assert.exists(mod.ensureArray)

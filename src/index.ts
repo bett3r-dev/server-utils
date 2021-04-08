@@ -1,3 +1,9 @@
+import T from 'simple-transducers';
+export const Transducers = T
+export * from 'rambda';
+export {reduce} from 'bett3r-utils';
+export * from 'bett3r-utils';
+
 export * from './modules/hashing'
 export * from './modules/http'
 export * from './modules/modules'
@@ -15,11 +21,6 @@ declare type types = typeof import('./modules/types');
 declare type tests = typeof import('./modules/tests');
 export declare interface ServerUtils extends hashing, http, modules, process, timers, tests, types {}
 
-import T from 'simple-transducers';
-export const Transducers = T
-export * from 'rambda';
-export {reduce} from 'bett3r-utils';
-export * from 'bett3r-utils';
 declare type transducers = typeof import('simple-transducers').default;
 declare type rambda = typeof import('rambda');
 declare type utils = typeof import('bett3r-utils');
