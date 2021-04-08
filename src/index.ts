@@ -18,10 +18,11 @@ export declare interface ServerUtils extends hashing, http, modules, process, ti
 import T from 'simple-transducers';
 export const Transducers = T
 export * from 'rambda';
+export {reduce} from 'bett3r-utils';
 export * from 'bett3r-utils';
 declare type transducers = typeof import('simple-transducers').default;
 declare type rambda = typeof import('rambda');
 declare type utils = typeof import('bett3r-utils');
-export declare interface Utils extends rambda, utils, ServerUtils {
+export declare interface Utils extends Omit<rambda, 'reduce'>, utils, ServerUtils {
   Transducers: transducers
 }

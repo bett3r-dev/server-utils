@@ -448,7 +448,7 @@ balanced-match@^1.0.0:
 
 "bett3r-utils@https://github.com/bett3r-dev/bett3r-utils.git":
   version "1.0.0"
-  resolved "https://github.com/bett3r-dev/bett3r-utils.git#b997b52bc388cbab248f4336ba0fdd96b2bae2ae"
+  resolved "https://github.com/bett3r-dev/bett3r-utils.git#c127519c894863c2e13dccc1deb95d94bb31da0e"
 
 binary-extensions@^2.0.0:
   version "2.2.0"
