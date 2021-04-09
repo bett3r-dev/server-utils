@@ -9,8 +9,8 @@ const path_1 = __importDefault(require("path"));
 describe('modules', function () {
     describe.only('loadModulesFromDirectory', function () {
         it('returns an object with the module name as key and the module', done => {
-            const options = {};
-            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), { options, recursive: true })
+            const options = { recursive: true };
+            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), options)
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.isFunction(modules.module2.function1);
@@ -22,7 +22,7 @@ describe('modules', function () {
             const options = {
                 whiteList: ['module1'],
             };
-            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), { options })
+            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), options)
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.notExists(modules.module2);
@@ -33,8 +33,9 @@ describe('modules', function () {
         it('Backlist - returns an object with the module name as key and the module', done => {
             const options = {
                 blackList: ['module3'],
+                recursive: true
             };
-            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), { options, recursive: true })
+            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), options)
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.isFunction(modules.module2.function1);
@@ -45,9 +46,10 @@ describe('modules', function () {
         it('returns an object with the module name as key and the module applying a create function', done => {
             const options = {
                 blackList: [],
+                recursive: true,
                 onImport: (module) => module.create({ name: 'tomas' })
             };
-            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderFactory'), { options, recursive: true })
+            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderFactory'), options)
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.isFunction(modules.module2.function1);

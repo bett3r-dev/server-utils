@@ -8,6 +8,7 @@ import path from 'path';
 export interface LoadModuleOptions {
   whiteList?: string[]
   blackList?: string[]
+  recursive?: boolean
   onImport?: <T extends ComponentModule>(module: any) => T | Promise<T>
 }
 
@@ -18,19 +19,14 @@ export interface ComponentModule{
   [key:string]: any
 }
 
-export interface LoadModulesFromDirectoryOptions {
-  options?: LoadModuleOptions
-  recursive?: boolean
-}
-
-export async function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, {options, recursive}: LoadModulesFromDirectoryOptions): Promise<Record<string, T>> {
+export async function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, options: LoadModuleOptions): Promise<Record<string, T>> {
   const components = fs.readdirSync( dirName );
   const map = {};
   for (const component of components) {
     const componentName = path.parse(component).name;
     if ( component === '.DS_Store' || ( options.whiteList?.length && !options.whiteList?.includes( componentName )) || ( options.blackList?.length && options.blackList?.includes( componentName ))) return map;
-    if (recursive && fs.statSync(`${dirName}/${component}`).isDirectory())
-      map[componentName] = await loadModulesFromDirectory<T>( `${dirName}/${component}`, {options, recursive} );
+    if (options.recursive && fs.statSync(`${dirName}/${component}`).isDirectory())
+      map[componentName] = await loadModulesFromDirectory<T>( `${dirName}/${component}`, options );
     else
       map[componentName] = options.onImport ? await options.onImport(await import( `${dirName}/${component}` ) as T) : await import( `${dirName}/${component}` ) as T;
   }

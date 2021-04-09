@@ -1,6 +1,7 @@
 export interface LoadModuleOptions {
     whiteList?: string[];
     blackList?: string[];
+    recursive?: boolean;
     onImport?: <T extends ComponentModule>(module: any) => T | Promise<T>;
 }
 export interface ComponentModule {
@@ -9,9 +10,5 @@ export interface ComponentModule {
     hookHandler?: () => {};
     [key: string]: any;
 }
-export interface LoadModulesFromDirectoryOptions {
-    options?: LoadModuleOptions;
-    recursive?: boolean;
-}
-export declare function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, { options, recursive }: LoadModulesFromDirectoryOptions): Promise<Record<string, T>>;
+export declare function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, options: LoadModuleOptions): Promise<Record<string, T>>;
 //# sourceMappingURL=modules.d.ts.map
