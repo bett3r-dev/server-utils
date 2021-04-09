@@ -30,7 +30,7 @@ async function loadModulesFromDirectory(dirName, options) {
     const map = {};
     for (const component of components) {
         const componentName = path_1.default.parse(component).name;
-        if (component === '.DS_Store' || (options.whiteList.length && !options.whiteList.includes(componentName)) || (options.blackList.length && options.blackList.includes(componentName)))
+        if (component === '.DS_Store' || (options.whiteList?.length && !options.whiteList?.includes(componentName)) || (options.blackList?.length && options.blackList?.includes(componentName)))
             return map;
         if (fs_1.default.statSync(`${dirName}/${component}`).isDirectory())
             map[componentName] = await loadModulesFromDirectory(`${dirName}/${component}`, options);

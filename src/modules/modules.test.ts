@@ -5,10 +5,7 @@ import path from 'path';
 describe( 'modules', function() {
   describe( 'loadModulesFromDirectory', function() {
     it( 'returns an object with the module name as key and the module', done => {
-      const options = {
-        whiteList:[],
-        blackList:[],
-      }
+      const options = {}
       loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderPlain'), options)
         .then(modules => {
           assert.isFunction(modules.module1.function1);
@@ -20,7 +17,6 @@ describe( 'modules', function() {
     it( 'Whitelist - returns an object with the module name as key and the module', done => {
       const options = {
         whiteList:['module1'],
-        blackList:[],
       }
       loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderPlain'), options)
         .then(modules => {
@@ -32,7 +28,6 @@ describe( 'modules', function() {
     } );
     it( 'Backlist - returns an object with the module name as key and the module', done => {
       const options = {
-        whiteList:[],
         blackList:['module3'],
       }
       loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderPlain'), options)
@@ -45,7 +40,6 @@ describe( 'modules', function() {
     } );
     it( 'returns an object with the module name as key and the module applying a create function', done => {
       const options = {
-        whiteList:[],
         blackList:[],
         onImport: (module: ComponentModule) => module.create({name: 'tomas'})
       }

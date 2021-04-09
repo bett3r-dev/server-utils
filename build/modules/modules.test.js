@@ -9,10 +9,7 @@ const path_1 = __importDefault(require("path"));
 describe('modules', function () {
     describe('loadModulesFromDirectory', function () {
         it('returns an object with the module name as key and the module', done => {
-            const options = {
-                whiteList: [],
-                blackList: [],
-            };
+            const options = {};
             modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), options)
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
@@ -24,7 +21,6 @@ describe('modules', function () {
         it('Whitelist - returns an object with the module name as key and the module', done => {
             const options = {
                 whiteList: ['module1'],
-                blackList: [],
             };
             modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), options)
                 .then(modules => {
@@ -36,7 +32,6 @@ describe('modules', function () {
         });
         it('Backlist - returns an object with the module name as key and the module', done => {
             const options = {
-                whiteList: [],
                 blackList: ['module3'],
             };
             modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), options)
@@ -49,7 +44,6 @@ describe('modules', function () {
         });
         it('returns an object with the module name as key and the module applying a create function', done => {
             const options = {
-                whiteList: [],
                 blackList: [],
                 onImport: (module) => module.create({ name: 'tomas' })
             };
