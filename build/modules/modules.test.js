@@ -7,10 +7,10 @@ const chai_1 = require("chai");
 const modules_1 = require("./modules");
 const path_1 = __importDefault(require("path"));
 describe('modules', function () {
-    describe('loadModulesFromDirectory', function () {
+    describe.only('loadModulesFromDirectory', function () {
         it('returns an object with the module name as key and the module', done => {
             const options = {};
-            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), options)
+            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), { options, recursive: true })
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.isFunction(modules.module2.function1);
@@ -22,7 +22,7 @@ describe('modules', function () {
             const options = {
                 whiteList: ['module1'],
             };
-            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), options)
+            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), { options })
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.notExists(modules.module2);
@@ -34,7 +34,7 @@ describe('modules', function () {
             const options = {
                 blackList: ['module3'],
             };
-            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), options)
+            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), { options, recursive: true })
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.isFunction(modules.module2.function1);
@@ -47,7 +47,7 @@ describe('modules', function () {
                 blackList: [],
                 onImport: (module) => module.create({ name: 'tomas' })
             };
-            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderFactory'), options)
+            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderFactory'), { options, recursive: true })
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.isFunction(modules.module2.function1);

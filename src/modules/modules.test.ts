@@ -3,10 +3,10 @@ import {ComponentModule, loadModulesFromDirectory} from './modules';
 import path from 'path';
 
 describe( 'modules', function() {
-  describe( 'loadModulesFromDirectory', function() {
+  describe.only( 'loadModulesFromDirectory', function() {
     it( 'returns an object with the module name as key and the module', done => {
       const options = {}
-      loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderPlain'), options)
+      loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderPlain'), {options, recursive:true})
         .then(modules => {
           assert.isFunction(modules.module1.function1);
           assert.isFunction(modules.module2.function1);
@@ -18,7 +18,7 @@ describe( 'modules', function() {
       const options = {
         whiteList:['module1'],
       }
-      loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderPlain'), options)
+      loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderPlain'), {options})
         .then(modules => {
           assert.isFunction(modules.module1.function1);
           assert.notExists(modules.module2);
@@ -30,7 +30,7 @@ describe( 'modules', function() {
       const options = {
         blackList:['module3'],
       }
-      loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderPlain'), options)
+      loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderPlain'), {options, recursive:true})
         .then(modules => {
           assert.isFunction(modules.module1.function1);
           assert.isFunction(modules.module2.function1);
@@ -43,7 +43,7 @@ describe( 'modules', function() {
         blackList:[],
         onImport: (module: ComponentModule) => module.create({name: 'tomas'})
       }
-      loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderFactory'), options)
+      loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderFactory'), {options, recursive:true})
         .then(modules => {
           assert.isFunction(modules.module1.function1);
           assert.isFunction(modules.module2.function1);

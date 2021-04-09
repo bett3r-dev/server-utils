@@ -25,15 +25,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.loadModulesFromDirectory = void 0;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-async function loadModulesFromDirectory(dirName, options) {
+async function loadModulesFromDirectory(dirName, { options, recursive }) {
     const components = fs_1.default.readdirSync(dirName);
     const map = {};
     for (const component of components) {
         const componentName = path_1.default.parse(component).name;
         if (component === '.DS_Store' || (options.whiteList?.length && !options.whiteList?.includes(componentName)) || (options.blackList?.length && options.blackList?.includes(componentName)))
             return map;
-        if (fs_1.default.statSync(`${dirName}/${component}`).isDirectory())
-            map[componentName] = await loadModulesFromDirectory(`${dirName}/${component}`, options);
+        if (recursive && fs_1.default.statSync(`${dirName}/${component}`).isDirectory())
+            map[componentName] = await loadModulesFromDirectory(`${dirName}/${component}`, { options, recursive });
         else
             map[componentName] = options.onImport ? await options.onImport(await Promise.resolve().then(() => __importStar(require(`${dirName}/${component}`)))) : await Promise.resolve().then(() => __importStar(require(`${dirName}/${component}`)));
     }
