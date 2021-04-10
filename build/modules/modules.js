@@ -31,7 +31,7 @@ async function loadModulesFromDirectory(dirName, options) {
     for (const component of components) {
         const componentName = path_1.default.parse(component).name;
         if (component === '.DS_Store' || (options.whiteList?.length && !options.whiteList?.includes(componentName)) || (options.blackList?.length && options.blackList?.includes(componentName)))
-            return map;
+            continue;
         if (options.recursive && fs_1.default.statSync(`${dirName}/${component}`).isDirectory())
             map[componentName] = await loadModulesFromDirectory(`${dirName}/${component}`, options);
         else

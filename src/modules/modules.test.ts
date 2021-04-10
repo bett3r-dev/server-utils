@@ -16,12 +16,12 @@ describe( 'modules', function() {
     } );
     it( 'Whitelist - returns an object with the module name as key and the module', done => {
       const options = {
-        whiteList:['module1'],
+        whiteList:['module2'],
       }
       loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderPlain'), options)
         .then(modules => {
-          assert.isFunction(modules.module1.function1);
-          assert.notExists(modules.module2);
+          assert.isFunction(modules.module2.function1);
+          assert.notExists(modules.module1);
           assert.notExists(modules.subFolder);
           done();
         })
