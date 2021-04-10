@@ -14,10 +14,10 @@ export interface fakeResponse {
  */
 export const createFakeServer = ( payloadToReturn?: fakeResponse[] | fakeResponse ): http.Server =>
   http.createServer(( req, res ) => {
-    map(( value, key ) => res.setHeader( key, value ), req.headers );
-    let route: fakeResponse = {};
+    map(( value: any, key ) => res.setHeader( key, value ), req.headers );
+    let route: fakeResponse | undefined = {};
     if ( Array.isArray( payloadToReturn ))
-      route = payloadToReturn.find( r => new RegExp( r.route ).test( req.url ));
+      route = payloadToReturn.find( r => new RegExp( r.route as string ).test( req.url as string ));
     else
       route = payloadToReturn;
     const body = route && route.body;

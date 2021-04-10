@@ -12,7 +12,8 @@ function intervalAtEveryUTC(params) {
     const now = startTime === false;
     const tick = flyd_1.default.stream();
     const currentDate = new Date().valueOf();
-    let intervalHandler, timeoutHandler;
+    let intervalHandler;
+    let timeoutHandler;
     const executeInterval = () => setInterval(() => {
         tick(new Date(new Date().valueOf() + interval));
     }, interval);

@@ -4,5 +4,5 @@ export interface FetchResponse<T = Record<string, any>> extends Omit<Response, '
     body: T;
 }
 export declare const processFetchResponse: (response: Response) => Async<Error, Response>;
-export declare const fetchAsync: (url: string, options?: RequestInit) => Async<Error, Response>;
+export declare const fetchAsync: (url: string, options?: RequestInit | undefined) => Async<Error, Response>;
 //# sourceMappingURL=http.d.ts.map

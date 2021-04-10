@@ -7,7 +7,8 @@ export function intervalAtEveryUTC( params?: { startTime?: string|boolean; inter
   const now = startTime === false;
   const tick = Stream.stream();
   const currentDate = new Date().valueOf();
-  let intervalHandler, timeoutHandler;
+  let intervalHandler : NodeJS.Timeout;
+  let timeoutHandler : NodeJS.Timeout;
   const executeInterval = () =>
     setInterval(() => {
       tick( new Date( new Date().valueOf() + interval ));

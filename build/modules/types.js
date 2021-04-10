@@ -9,7 +9,7 @@ const Queue = (init) => {
         pop: () => !!values.length && values.pop(),
         push: value => { values.unshift(value); return exports.Queue(values); },
         has: value => values.includes(value),
-        ap: data => values.map(x => x(data)),
+        ap: data => values.map((x) => x(data)),
         map: f => exports.Queue(values.map(f)),
         fold: f => values.map(f),
         concat: other => exports.Queue(other.fold(x => x).concat(values)),

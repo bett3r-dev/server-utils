@@ -19,7 +19,7 @@ export const Queue = <T>( init? : any) : Queue<T> => {
     pop: () => !!values.length && values.pop(),
     push: value => { values.unshift( value ); return Queue( values ); },
     has: value => values.includes( value ),
-    ap: data => values.map( x => x( data )),
+    ap: data => values.map( (x:Function) => x( data )),
     map: f => Queue( values.map( f )),
     fold: f => values.map( f ),
     concat: other=> Queue( other.fold(x=>x).concat( values )),

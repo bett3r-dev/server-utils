@@ -9,5 +9,5 @@ export interface fakeResponse {
   * @param payloadToReturn Payload to return to all possible requests or an array of pairs with path and payload
  * @returns {http.Server}
  */
-export declare const createFakeServer: (payloadToReturn?: fakeResponse[] | fakeResponse) => http.Server;
+export declare const createFakeServer: (payloadToReturn?: fakeResponse | fakeResponse[] | undefined) => http.Server;
 //# sourceMappingURL=tests.d.ts.map

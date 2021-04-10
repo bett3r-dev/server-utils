@@ -1,1 +1,1 @@
-{"version":3,"file":"timers.d.ts","sourceRoot":"","sources":["../../src/modules/timers.ts"],"names":[],"mappings":"AAEA,wBAAgB,kBAAkB,CAAE,MAAM,CAAC,EAAE;IAAE,SAAS,CAAC,EAAE,MAAM,GAAC,OAAO,CAAC;IAAC,QAAQ,CAAC,EAAE,MAAM,CAAC;CAAE,wBA+B9F"}
+{"version":3,"file":"timers.d.ts","sourceRoot":"","sources":["../../src/modules/timers.ts"],"names":[],"mappings":"AAEA,wBAAgB,kBAAkB,CAAE,MAAM,CAAC,EAAE;IAAE,SAAS,CAAC,EAAE,MAAM,GAAC,OAAO,CAAC;IAAC,QAAQ,CAAC,EAAE,MAAM,CAAC;CAAE,wBAgC9F"}

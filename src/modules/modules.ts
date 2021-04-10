@@ -21,7 +21,7 @@ export interface ComponentModule{
 
 export async function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, options: LoadModuleOptions): Promise<Record<string, T>> {
   const components = fs.readdirSync( dirName );
-  const map = {};
+  const map: Record<string, any> = {};
   for (const component of components) {
     const componentName = path.parse(component).name;
     if ( component === '.DS_Store' || ( options.whiteList?.length && !options.whiteList?.includes( componentName )) || ( options.blackList?.length && options.blackList?.includes( componentName )))

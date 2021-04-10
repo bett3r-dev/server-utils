@@ -14,11 +14,11 @@ export declare const Transducers: {
     flatMap: <TInput_5, TResult_7>(fn: (curr: TInput_5) => TResult_7 | import("simple-transducers").Reduced<TResult_7>) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
     filter: <TInput_6, TResult_8>(predicate: (curr: TInput_6, acc: TResult_8) => boolean) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
     reduce: <TInput_7, TResult_9>(fn: (accumulated: TResult_9 | import("simple-transducers").Reduced<TResult_9>, current: TInput_7) => TResult_9 | import("simple-transducers").Reduced<TResult_9>, initial: TResult_9 | import("simple-transducers").Reduced<TResult_9>) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
-    dedupe: <T>(allValues?: boolean, lastValue?: T) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
-    take: (count?: number) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
-    skip: (count?: number) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
+    dedupe: <T>(allValues?: boolean | undefined, lastValue?: T | undefined) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
+    take: (count?: number | undefined) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
+    skip: (count?: number | undefined) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
     takeUntil: <TInput_8, TResult_10>(predicate: (curr: TInput_8, acc: TResult_10) => boolean) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
-    skipWhile: <TInput_9, TResult_11>(predicate: (curr: TInput_9, acc: TResult_11) => boolean, state?: boolean) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
+    skipWhile: <TInput_9, TResult_11>(predicate: (curr: TInput_9, acc: TResult_11) => boolean, state?: boolean | undefined) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
     transduce: <TInput_10, TResult_12>(transformer: (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer, reducer: import("simple-transducers").Transducer, initialValue: import("simple-transducers").CollectionResult<TResult_12>, collection: import("simple-transducers").CollectionInput<TInput_10>) => import("simple-transducers").CollectionResult<TResult_12>;
     into: {
         <TInput_11, TResult_13>(to: import("simple-transducers").CollectionResult<TResult_13>, transformer: (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer): import("simple-transducers").PartialSeq<TInput_11, TResult_13>;
@@ -26,7 +26,7 @@ export declare const Transducers: {
     };
     seq: {
         <TInput_13, TResult_15>(transformer: (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer): import("simple-transducers").PartialInto<TInput_13, TResult_15>;
-        <TInput_14, TResult_16>(transformer: (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer, collection?: import("simple-transducers").CollectionInput<TInput_14>): import("simple-transducers").CollectionResult<TResult_16>;
+        <TInput_14, TResult_16>(transformer: (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer, collection?: import("simple-transducers").CollectionInput<TInput_14> | undefined): import("simple-transducers").CollectionResult<TResult_16>;
     };
 };
 export * from 'rambda';
