@@ -7,7 +7,7 @@ const chai_1 = require("chai");
 const modules_1 = require("./modules");
 const path_1 = __importDefault(require("path"));
 describe('modules', function () {
-    describe.only('loadModulesFromDirectory', function () {
+    describe('loadModulesFromDirectory', function () {
         it('returns an object with the module name as key and the module', done => {
             const options = { recursive: true };
             modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), options)
@@ -54,6 +54,21 @@ describe('modules', function () {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.isFunction(modules.module2.function1);
                 chai_1.assert.isFunction(modules.subFolder.module3.function1);
+                done();
+            });
+        });
+        it('formats the module name with a function passed in options', done => {
+            const options = {
+                blackList: [],
+                recursive: true,
+                onImport: (module) => module.create({ name: 'tomas' }),
+                formatName: (name) => name.toUpperCase()
+            };
+            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderFactory'), options)
+                .then(modules => {
+                chai_1.assert.isFunction(modules.MODULE1.function1);
+                chai_1.assert.isFunction(modules.MODULE2.function1);
+                chai_1.assert.isFunction(modules.SUBFOLDER.MODULE3.function1);
                 done();
             });
         });

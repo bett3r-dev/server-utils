@@ -29,7 +29,7 @@ async function loadModulesFromDirectory(dirName, options) {
     const components = fs_1.default.readdirSync(dirName);
     const map = {};
     for (const component of components) {
-        const componentName = path_1.default.parse(component).name;
+        const componentName = options.formatName ? options.formatName(path_1.default.parse(component).name) : path_1.default.parse(component).name;
         if (component === '.DS_Store' || (options.whiteList?.length && !options.whiteList?.includes(componentName)) || (options.blackList?.length && options.blackList?.includes(componentName)))
             continue;
         if (options.recursive && fs_1.default.statSync(`${dirName}/${component}`).isDirectory())

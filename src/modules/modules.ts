@@ -9,7 +9,8 @@ export interface LoadModuleOptions {
   whiteList?: string[]
   blackList?: string[]
   recursive?: boolean
-  onImport?: <T extends ComponentModule>(module: any) => T | Promise<T>
+  onImport?: <T extends ComponentModule>(module: any) => T | Promise<T>,
+  formatName?: (name: string) => string
 }
 
 export interface ComponentModule{
@@ -23,7 +24,7 @@ export async function loadModulesFromDirectory<T extends ComponentModule>(dirNam
   const components = fs.readdirSync( dirName );
   const map: Record<string, any> = {};
   for (const component of components) {
-    const componentName = path.parse(component).name;
+    const componentName = options.formatName ? options.formatName(path.parse(component).name) : path.parse(component).name;
     if ( component === '.DS_Store' || ( options.whiteList?.length && !options.whiteList?.includes( componentName )) || ( options.blackList?.length && options.blackList?.includes( componentName )))
       continue;
     if (options.recursive && fs.statSync(`${dirName}/${component}`).isDirectory())

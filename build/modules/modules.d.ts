@@ -3,6 +3,7 @@ export interface LoadModuleOptions {
     blackList?: string[];
     recursive?: boolean;
     onImport?: <T extends ComponentModule>(module: any) => T | Promise<T>;
+    formatName?: (name: string) => string;
 }
 export interface ComponentModule {
     init?: () => Promise<any>;

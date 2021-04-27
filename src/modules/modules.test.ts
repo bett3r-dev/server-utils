@@ -3,7 +3,7 @@ import {ComponentModule, loadModulesFromDirectory} from './modules';
 import path from 'path';
 
 describe( 'modules', function() {
-  describe.only( 'loadModulesFromDirectory', function() {
+  describe( 'loadModulesFromDirectory', function() {
     it( 'returns an object with the module name as key and the module', done => {
       const options = {recursive:true}
       loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderPlain'), options)
@@ -52,6 +52,21 @@ describe( 'modules', function() {
           assert.isFunction(modules.subFolder.module3.function1);
           done();
         })
-    } );
+    });
+    it('formats the module name with a function passed in options', done => {
+      const options = {
+        blackList:[],
+        recursive:true,
+        onImport: (module: ComponentModule) => module.create({name: 'tomas'}),
+        formatName: (name:string) => name.toUpperCase()
+      }
+      loadModulesFromDirectory(path.join(__dirname, '../fixtures/modulesFolderFactory'), options)
+        .then(modules => {
+          assert.isFunction(modules.MODULE1.function1);
+          assert.isFunction(modules.MODULE2.function1);
+          assert.isFunction(modules.SUBFOLDER.MODULE3.function1);
+          done();
+        })
+    });
   });
 });
