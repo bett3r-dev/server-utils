@@ -22,9 +22,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loadModulesFromDirectory = void 0;
+exports.loadModulesFromDirectory = exports.toCamelCase = void 0;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+const rambda_1 = require("rambda");
+const simple_transducers_1 = __importDefault(require("simple-transducers"));
+function toCamelCase(str) {
+    return simple_transducers_1.default.seq(rambda_1.compose(simple_transducers_1.default.filter(part => !!part), simple_transducers_1.default.map((part, index) => index === 0 ? part : part[0].toUpperCase() + part.slice(1)), simple_transducers_1.default.reduce((acc, curr) => acc + curr, '')), str.split(/[_\s\-]/));
+}
+exports.toCamelCase = toCamelCase;
 async function loadModulesFromDirectory(dirName, options) {
     const components = fs_1.default.readdirSync(dirName);
     const map = {};

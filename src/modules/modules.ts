@@ -1,5 +1,7 @@
 import fs from 'fs';
 import path from 'path';
+import {compose} from 'rambda';
+import t from 'simple-transducers';
 
 //*******************************************
 // TS types
@@ -18,6 +20,14 @@ export interface ComponentModule{
   destroy?: () => Promise<any>;
   hookHandler?: ()=>{};
   [key:string]: any
+}
+
+export function toCamelCase(str:string) {
+  return t.seq( compose(
+    t.filter(part => !!part),
+    t.map((part:string, index:number) => index===0 ? part : part[0].toUpperCase() + part.slice(1)),
+    t.reduce((acc, curr:string) => acc+curr, '')
+  ) ,str.split(/[_\s\-]/))
 }
 
 export async function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, options: LoadModuleOptions): Promise<Record<string, T>> {

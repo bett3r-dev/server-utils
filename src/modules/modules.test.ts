@@ -1,8 +1,16 @@
 import { assert } from 'chai';
-import {ComponentModule, loadModulesFromDirectory} from './modules';
+import {ComponentModule, toCamelCase, loadModulesFromDirectory} from './modules';
 import path from 'path';
 
 describe( 'modules', function() {
+
+  describe('toCammelCase', function() {
+    it('transforms strings to camel case', () => {
+      assert.equal(toCamelCase('hola pana mio'), 'holaPanaMio');
+      assert.equal(toCamelCase('hola panaMio'), 'holaPanaMio');
+      assert.equal(toCamelCase('hola_pana-mio'), 'holaPanaMio');
+    });
+  });
   describe( 'loadModulesFromDirectory', function() {
     it( 'returns an object with the module name as key and the module', done => {
       const options = {recursive:true}

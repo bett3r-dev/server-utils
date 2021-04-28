@@ -1,8 +1,8 @@
 export declare const Transducers: {
-    FilterReducer: <TInput, TResult>(predicate: (curr: TInput, acc: TResult) => boolean, reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
-    MapReducer: <TInput_1, TResult_1>(fn: (curr: TInput_1, acc: TResult_1) => TResult_1 | import("simple-transducers").Reduced<TResult_1>, reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
+    FilterReducer: <TInput, TResult>(predicate: (curr: TInput, acc: TResult, index: number) => boolean, reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
+    MapReducer: <TInput_1, TResult_1>(fn: (curr: TInput_1, index: number, acc: TResult_1) => TResult_1 | import("simple-transducers").Reduced<TResult_1>, reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
     ReduceReducer: <TInput_2, TResult_2>(fn: (accumulated: TResult_2 | import("simple-transducers").Reduced<TResult_2>, current: TInput_2) => TResult_2 | import("simple-transducers").Reduced<TResult_2>, initial: TResult_2 | import("simple-transducers").Reduced<TResult_2>, reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
-    WhileReducer: <TInput_3, TResult_3>(predicate: (curr: TInput_3, acc: TResult_3) => boolean, reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
+    WhileReducer: <TInput_3, TResult_3>(predicate: (curr: TInput_3, index: number, acc: TResult_3) => boolean, reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
     StandardReducer: (description: any) => import("simple-transducers").Transducer;
     defaultReducerProps: (reducer: any) => {
         '@@transducer/init': (...args: any[]) => any;
@@ -10,9 +10,9 @@ export declare const Transducers: {
     };
     Reduced: <TResult_4>(value: any) => import("simple-transducers").Reduced<TResult_4>;
     isReduced: <TResult_5>(result: TResult_5 | import("simple-transducers").Reduced<TResult_5>) => boolean;
-    map: <TInput_4, TResult_6>(fn: (curr: TInput_4, acc: TResult_6) => TResult_6 | import("simple-transducers").Reduced<TResult_6>) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
+    map: <TInput_4, TResult_6>(fn: (curr: TInput_4, index: number, acc: TResult_6) => TResult_6 | import("simple-transducers").Reduced<TResult_6>) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
     flatMap: <TInput_5, TResult_7>(fn: (curr: TInput_5) => TResult_7 | import("simple-transducers").Reduced<TResult_7>) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
-    filter: <TInput_6, TResult_8>(predicate: (curr: TInput_6, acc: TResult_8) => boolean) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
+    filter: <TInput_6, TResult_8>(predicate: (curr: TInput_6, acc: TResult_8, index: number) => boolean) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
     reduce: <TInput_7, TResult_9>(fn: (accumulated: TResult_9 | import("simple-transducers").Reduced<TResult_9>, current: TInput_7) => TResult_9 | import("simple-transducers").Reduced<TResult_9>, initial: TResult_9 | import("simple-transducers").Reduced<TResult_9>) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
     dedupe: <T>(allValues?: boolean | undefined, lastValue?: T | undefined) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;
     take: (count?: number | undefined) => (reducer: import("simple-transducers").Transducer) => import("simple-transducers").Transducer;

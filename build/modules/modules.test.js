@@ -7,6 +7,13 @@ const chai_1 = require("chai");
 const modules_1 = require("./modules");
 const path_1 = __importDefault(require("path"));
 describe('modules', function () {
+    describe('toCammelCase', function () {
+        it('transforms strings to camel case', () => {
+            chai_1.assert.equal(modules_1.toCamelCase('hola pana mio'), 'holaPanaMio');
+            chai_1.assert.equal(modules_1.toCamelCase('hola panaMio'), 'holaPanaMio');
+            chai_1.assert.equal(modules_1.toCamelCase('hola_pana-mio'), 'holaPanaMio');
+        });
+    });
     describe('loadModulesFromDirectory', function () {
         it('returns an object with the module name as key and the module', done => {
             const options = { recursive: true };
