@@ -11,6 +11,6 @@ export interface ComponentModule {
     hookHandler?: () => {};
     [key: string]: any;
 }
-export declare function toCamelCase(str: string): unknown;
+export declare function toCamelCase(str: string): string;
 export declare function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, options: LoadModuleOptions): Promise<Record<string, T>>;
 //# sourceMappingURL=modules.d.ts.map
