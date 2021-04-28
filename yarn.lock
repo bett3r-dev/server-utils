@@ -448,7 +448,7 @@ balanced-match@^1.0.0:
 
 "bett3r-utils@https://github.com/bett3r-dev/bett3r-utils.git":
   version "1.0.0"
-  resolved "https://github.com/bett3r-dev/bett3r-utils.git#e5223aa61bf60e4b1d37fed0208f2c53c945e3eb"
+  resolved "https://github.com/bett3r-dev/bett3r-utils.git#3028fe0b3dc00a2c947f58574f444bda55229b61"
 
 binary-extensions@^2.0.0:
   version "2.2.0"
@@ -1808,7 +1808,7 @@ signal-exit@^3.0.2:
 
 "simple-transducers@https://github.com/bett3r-dev/simple-transducers":
   version "1.0.0"
-  resolved "https://github.com/bett3r-dev/simple-transducers#0662e818418faad8e903ba549da3dab739ab06fe"
+  resolved "https://github.com/bett3r-dev/simple-transducers#879b63f0f2f02da23dccd1d9b544d1eae47a6cca"
 
 sinon@^9.2.4:
   version "9.2.4"
