@@ -25,7 +25,7 @@ export interface ComponentModule{
 export function toCamelCase(str:string): string {
   return t.seq( compose(
     t.filter(part => !!part),
-    t.map((part:string, index:number) => index===0 ? part : part[0].toUpperCase() + part.slice(1)),
+    t.map((part:string, index:number) => (index===0 ? part[0].toLowerCase() : part[0].toUpperCase()) + part.slice(1)),
     t.reduce((acc, curr:string) => acc+curr, '')
   ) ,str.split(/[_\s\-]/)) as string
 }

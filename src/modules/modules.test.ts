@@ -8,7 +8,7 @@ describe( 'modules', function() {
     it('transforms strings to camel case', () => {
       assert.equal(toCamelCase('hola pana mio'), 'holaPanaMio');
       assert.equal(toCamelCase('hola panaMio'), 'holaPanaMio');
-      assert.equal(toCamelCase('hola_pana-mio'), 'holaPanaMio');
+      assert.equal(toCamelCase('Hola_pana-mio'), 'holaPanaMio');
     });
   });
   describe( 'loadModulesFromDirectory', function() {

@@ -28,7 +28,7 @@ const path_1 = __importDefault(require("path"));
 const rambda_1 = require("rambda");
 const simple_transducers_1 = __importDefault(require("simple-transducers"));
 function toCamelCase(str) {
-    return simple_transducers_1.default.seq(rambda_1.compose(simple_transducers_1.default.filter(part => !!part), simple_transducers_1.default.map((part, index) => index === 0 ? part : part[0].toUpperCase() + part.slice(1)), simple_transducers_1.default.reduce((acc, curr) => acc + curr, '')), str.split(/[_\s\-]/));
+    return simple_transducers_1.default.seq(rambda_1.compose(simple_transducers_1.default.filter(part => !!part), simple_transducers_1.default.map((part, index) => (index === 0 ? part[0].toLowerCase() : part[0].toUpperCase()) + part.slice(1)), simple_transducers_1.default.reduce((acc, curr) => acc + curr, '')), str.split(/[_\s\-]/));
 }
 exports.toCamelCase = toCamelCase;
 async function loadModulesFromDirectory(dirName, options) {

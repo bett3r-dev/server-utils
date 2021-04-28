@@ -11,7 +11,7 @@ describe('modules', function () {
         it('transforms strings to camel case', () => {
             chai_1.assert.equal(modules_1.toCamelCase('hola pana mio'), 'holaPanaMio');
             chai_1.assert.equal(modules_1.toCamelCase('hola panaMio'), 'holaPanaMio');
-            chai_1.assert.equal(modules_1.toCamelCase('hola_pana-mio'), 'holaPanaMio');
+            chai_1.assert.equal(modules_1.toCamelCase('Hola_pana-mio'), 'holaPanaMio');
         });
     });
     describe('loadModulesFromDirectory', function () {
