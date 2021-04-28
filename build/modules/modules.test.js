@@ -12,6 +12,9 @@ describe('modules', function () {
             chai_1.assert.equal(modules_1.toCamelCase('hola pana mio'), 'holaPanaMio');
             chai_1.assert.equal(modules_1.toCamelCase('hola panaMio'), 'holaPanaMio');
             chai_1.assert.equal(modules_1.toCamelCase('Hola_pana-mio'), 'holaPanaMio');
+            chai_1.assert.equal(modules_1.toCamelCase('configuration-manager'), 'configurationManager');
+            chai_1.assert.equal(modules_1.toCamelCase('logger-manager'), 'loggerManager');
+            chai_1.assert.equal(modules_1.toCamelCase('component1'), 'component1');
         });
     });
     describe('loadModulesFromDirectory', function () {
