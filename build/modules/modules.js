@@ -34,14 +34,15 @@ exports.toCamelCase = toCamelCase;
 async function loadModulesFromDirectory(dirName, options) {
     const components = fs_1.default.readdirSync(dirName);
     const map = {};
-    for (const component of components) {
-        const componentName = options.formatName ? options.formatName(path_1.default.parse(component).name) : path_1.default.parse(component).name;
-        if (component === '.DS_Store' || (options.whiteList?.length && !options.whiteList?.includes(componentName)) || (options.blackList?.length && options.blackList?.includes(componentName)))
+    for (let module of components) {
+        const moduleName = path_1.default.parse(module).name;
+        const componentName = options.formatName ? options.formatName(moduleName) : moduleName;
+        if (module === '.DS_Store' || (options.whiteList?.length && !options.whiteList?.includes(moduleName)) || (options.blackList?.length && options.blackList?.includes(moduleName)))
             continue;
-        if (options.recursive && fs_1.default.statSync(`${dirName}/${component}`).isDirectory())
-            map[componentName] = await loadModulesFromDirectory(`${dirName}/${component}`, options);
+        if (options.recursive && fs_1.default.statSync(`${dirName}/${module}`).isDirectory())
+            map[componentName] = await loadModulesFromDirectory(`${dirName}/${module}`, options);
         else
-            map[componentName] = options.onImport ? await options.onImport(await Promise.resolve().then(() => __importStar(require(`${dirName}/${component}`)))) : await Promise.resolve().then(() => __importStar(require(`${dirName}/${component}`)));
+            map[componentName] = options.onImport ? await options.onImport(await Promise.resolve().then(() => __importStar(require(`${dirName}/${module}`)))) : await Promise.resolve().then(() => __importStar(require(`${dirName}/${module}`)));
     }
     return map;
 }

@@ -33,14 +33,15 @@ export function toCamelCase(str:string): string {
 export async function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, options: LoadModuleOptions): Promise<Record<string, T>> {
   const components = fs.readdirSync( dirName );
   const map: Record<string, any> = {};
-  for (const component of components) {
-    const componentName = options.formatName ? options.formatName(path.parse(component).name) : path.parse(component).name;
-    if ( component === '.DS_Store' || ( options.whiteList?.length && !options.whiteList?.includes( componentName )) || ( options.blackList?.length && options.blackList?.includes( componentName )))
+  for (let module of components) {
+    const moduleName = path.parse(module).name
+    const componentName = options.formatName ? options.formatName(moduleName) : moduleName;
+    if ( module === '.DS_Store' || ( options.whiteList?.length && !options.whiteList?.includes(  moduleName )) || ( options.blackList?.length && options.blackList?.includes(  moduleName )))
       continue;
-    if (options.recursive && fs.statSync(`${dirName}/${component}`).isDirectory())
-      map[componentName] = await loadModulesFromDirectory<T>( `${dirName}/${component}`, options );
+    if (options.recursive && fs.statSync(`${dirName}/${module}`).isDirectory())
+      map[componentName] = await loadModulesFromDirectory<T>( `${dirName}/${module}`, options );
     else
-      map[componentName] = options.onImport ? await options.onImport(await import( `${dirName}/${component}` ) as T) : await import( `${dirName}/${component}` ) as T;
+      map[componentName] = options.onImport ? await options.onImport(await import( `${dirName}/${module}` ) as T) : await import( `${dirName}/${module}` ) as T;
   }
   return map;
 }
