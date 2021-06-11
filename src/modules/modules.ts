@@ -1,6 +1,10 @@
+import * as u from 'bett3r-utils';
+
+import {compose, map, pick} from 'rambda';
+
+import Identity from 'crocks/Identity'
 import fs from 'fs';
 import path from 'path';
-import {compose} from 'rambda';
 import t from 'simple-transducers';
 
 //*******************************************
@@ -30,18 +34,30 @@ export function toCamelCase(str:string): string {
   ) ,str.split(/[_\s\-]/)) as string
 }
 
+
+export function filterFilename(filename:string, module:string, {whiteList, blackList}: {whiteList?: RegExp[], blackList?: RegExp[]}) {
+  if (filename === '.DS_Store' || ( whiteList?.length && !whiteList?.some( match => match.test(module) )) || ( blackList?.length && blackList?.some( match => match.test(module) )))
+    return true;
+}
+
+export const formatRegExpForFileLists = (options:LoadModuleOptions): {whiteList: RegExp[], blackList: RegExp[]} =>
+  Identity.of(options)
+    .map(pick(['whiteList', 'blackList']))
+    .map(map(map(RegExp)))
+    .valueOf()
+
 export async function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, options: LoadModuleOptions): Promise<Record<string, T>> {
   const components = fs.readdirSync( dirName );
-  const map: Record<string, any> = {};
-  for (let module of components) {
-    const moduleName = path.parse(module).name
-    const componentName = options.formatName ? options.formatName(moduleName) : moduleName;
-    if ( module === '.DS_Store' || ( options.whiteList?.length && !options.whiteList?.includes(  moduleName )) || ( options.blackList?.length && options.blackList?.includes(  moduleName )))
+  const modulesMap: Record<string, any> = {};
+  for (let filename of components) {
+    const module = path.parse(filename).name
+    const componentName = options.formatName ? options.formatName(module) : module;
+    if (filterFilename(filename, module, formatRegExpForFileLists(options)))
       continue;
-    if (options.recursive && fs.statSync(`${dirName}/${module}`).isDirectory())
-      map[componentName] = await loadModulesFromDirectory<T>( `${dirName}/${module}`, options );
+    if (options.recursive && fs.statSync(`${dirName}/${filename}`).isDirectory())
+      modulesMap[componentName] = await loadModulesFromDirectory<T>( `${dirName}/${filename}`, options );
     else
-      map[componentName] = options.onImport ? await options.onImport(await import( `${dirName}/${module}` ) as T) : await import( `${dirName}/${module}` ) as T;
+      modulesMap[componentName] = options.onImport ? await options.onImport(await import( `${dirName}/${filename}` ) as T) : await import( `${dirName}/${filename}` ) as T;
   }
-  return map;
+  return modulesMap;
 }

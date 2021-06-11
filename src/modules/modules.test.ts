@@ -1,5 +1,6 @@
+import {ComponentModule, loadModulesFromDirectory, toCamelCase} from './modules';
+
 import { assert } from 'chai';
-import {ComponentModule, toCamelCase, loadModulesFromDirectory} from './modules';
 import path from 'path';
 
 describe( 'modules', function() {

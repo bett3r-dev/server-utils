@@ -22,29 +22,40 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loadModulesFromDirectory = exports.toCamelCase = void 0;
+exports.loadModulesFromDirectory = exports.formatRegExpForFileLists = exports.filterFilename = exports.toCamelCase = void 0;
+const rambda_1 = require("rambda");
+const Identity_1 = __importDefault(require("crocks/Identity"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-const rambda_1 = require("rambda");
 const simple_transducers_1 = __importDefault(require("simple-transducers"));
 function toCamelCase(str) {
     return simple_transducers_1.default.seq(rambda_1.compose(simple_transducers_1.default.filter(part => !!part), simple_transducers_1.default.map((part, index) => (index === 0 ? part[0].toLowerCase() : part[0].toUpperCase()) + part.slice(1)), simple_transducers_1.default.reduce((acc, curr) => acc + curr, '')), str.split(/[_\s\-]/));
 }
 exports.toCamelCase = toCamelCase;
+function filterFilename(filename, module, { whiteList, blackList }) {
+    if (filename === '.DS_Store' || (whiteList?.length && !whiteList?.some(match => match.test(module))) || (blackList?.length && blackList?.some(match => match.test(module))))
+        return true;
+}
+exports.filterFilename = filterFilename;
+const formatRegExpForFileLists = (options) => Identity_1.default.of(options)
+    .map(rambda_1.pick(['whiteList', 'blackList']))
+    .map(rambda_1.map(rambda_1.map(RegExp)))
+    .valueOf();
+exports.formatRegExpForFileLists = formatRegExpForFileLists;
 async function loadModulesFromDirectory(dirName, options) {
     const components = fs_1.default.readdirSync(dirName);
-    const map = {};
-    for (let module of components) {
-        const moduleName = path_1.default.parse(module).name;
-        const componentName = options.formatName ? options.formatName(moduleName) : moduleName;
-        if (module === '.DS_Store' || (options.whiteList?.length && !options.whiteList?.includes(moduleName)) || (options.blackList?.length && options.blackList?.includes(moduleName)))
+    const modulesMap = {};
+    for (let filename of components) {
+        const module = path_1.default.parse(filename).name;
+        const componentName = options.formatName ? options.formatName(module) : module;
+        if (filterFilename(filename, module, exports.formatRegExpForFileLists(options)))
             continue;
-        if (options.recursive && fs_1.default.statSync(`${dirName}/${module}`).isDirectory())
-            map[componentName] = await loadModulesFromDirectory(`${dirName}/${module}`, options);
+        if (options.recursive && fs_1.default.statSync(`${dirName}/${filename}`).isDirectory())
+            modulesMap[componentName] = await loadModulesFromDirectory(`${dirName}/${filename}`, options);
         else
-            map[componentName] = options.onImport ? await options.onImport(await Promise.resolve().then(() => __importStar(require(`${dirName}/${module}`)))) : await Promise.resolve().then(() => __importStar(require(`${dirName}/${module}`)));
+            modulesMap[componentName] = options.onImport ? await options.onImport(await Promise.resolve().then(() => __importStar(require(`${dirName}/${filename}`)))) : await Promise.resolve().then(() => __importStar(require(`${dirName}/${filename}`)));
     }
-    return map;
+    return modulesMap;
 }
 exports.loadModulesFromDirectory = loadModulesFromDirectory;
 //# sourceMappingURL=modules.js.map
