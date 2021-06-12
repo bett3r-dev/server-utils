@@ -39,7 +39,7 @@ function filterFilename(filename, module, { whiteList, blackList }) {
 exports.filterFilename = filterFilename;
 const formatRegExpForFileLists = (options) => Identity_1.default.of(options)
     .map(rambda_1.pick(['whiteList', 'blackList']))
-    .map(rambda_1.map(rambda_1.map(RegExp)))
+    .map(rambda_1.map(rambda_1.map((match) => RegExp(match, 'i'))))
     .valueOf();
 exports.formatRegExpForFileLists = formatRegExpForFileLists;
 async function loadModulesFromDirectory(dirName, options) {

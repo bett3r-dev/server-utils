@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const http_1 = require("./http");
 const chai_1 = require("chai");
 const tests_1 = require("./tests");
-const http_1 = require("./http");
 describe('http', function () {
     describe('fetchAsync', function () {
         it('works like fetch but retuns an async', done => {

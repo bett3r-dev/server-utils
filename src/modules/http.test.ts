@@ -1,8 +1,9 @@
+import {FetchResponse, fetchAsync, processFetchResponse} from './http';
+
+import { AddressInfo } from 'net';
+import { Response } from 'node-fetch';
 import { assert } from 'chai';
 import {createFakeServer} from './tests';
-import {fetchAsync, FetchResponse, processFetchResponse} from './http';
-import { Response } from 'node-fetch';
-import { AddressInfo } from 'node:net';
 
 describe( 'http', function() {
   describe( 'fetchAsync', function() {

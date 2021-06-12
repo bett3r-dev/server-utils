@@ -43,7 +43,7 @@ export function filterFilename(filename:string, module:string, {whiteList, black
 export const formatRegExpForFileLists = (options:LoadModuleOptions): {whiteList: RegExp[], blackList: RegExp[]} =>
   Identity.of(options)
     .map(pick(['whiteList', 'blackList']))
-    .map(map(map(RegExp)))
+    .map(map(map((match: string) => RegExp(match, 'i'))))
     .valueOf()
 
 export async function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, options: LoadModuleOptions): Promise<Record<string, T>> {
