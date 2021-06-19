@@ -45,10 +45,11 @@ exports.formatRegExpForFileLists = formatRegExpForFileLists;
 async function loadModulesFromDirectory(dirName, options) {
     const components = fs_1.default.readdirSync(dirName);
     const modulesMap = {};
+    const moduleFilesFilters = exports.formatRegExpForFileLists(options);
     for (let filename of components) {
         const module = path_1.default.parse(filename).name;
         const componentName = options.formatName ? options.formatName(module) : module;
-        if (filterFilename(filename, module, exports.formatRegExpForFileLists(options)))
+        if (filterFilename(filename, module, moduleFilesFilters))
             continue;
         if (options.recursive && fs_1.default.statSync(`${dirName}/${filename}`).isDirectory())
             modulesMap[componentName] = await loadModulesFromDirectory(`${dirName}/${filename}`, options);
