@@ -16,9 +16,5 @@ export declare function filterFilename(filename: string, module: string, { white
     whiteList?: any[];
     blackList?: any[];
 }): true | undefined;
-export declare const formatRegExpForFileLists: (options: LoadModuleOptions) => {
-    whiteList: RegExp[];
-    blackList: RegExp[];
-};
 export declare function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, options: LoadModuleOptions): Promise<Record<string, T>>;
 //# sourceMappingURL=modules.d.ts.map

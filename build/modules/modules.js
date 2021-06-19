@@ -22,9 +22,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loadModulesFromDirectory = exports.formatRegExpForFileLists = exports.filterFilename = exports.toCamelCase = void 0;
+exports.loadModulesFromDirectory = exports.filterFilename = exports.toCamelCase = void 0;
 const rambda_1 = require("rambda");
-const Identity_1 = __importDefault(require("crocks/Identity"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const simple_transducers_1 = __importDefault(require("simple-transducers"));
@@ -37,19 +36,13 @@ function filterFilename(filename, module, { whiteList, blackList }) {
         return true;
 }
 exports.filterFilename = filterFilename;
-const formatRegExpForFileLists = (options) => Identity_1.default.of(options)
-    .map(rambda_1.pick(['whiteList', 'blackList']))
-    .map(rambda_1.map(rambda_1.map((match) => RegExp(match, 'i'))))
-    .valueOf();
-exports.formatRegExpForFileLists = formatRegExpForFileLists;
 async function loadModulesFromDirectory(dirName, options) {
     const components = fs_1.default.readdirSync(dirName);
     const modulesMap = {};
-    const moduleFilesFilters = exports.formatRegExpForFileLists(options);
     for (let filename of components) {
         const module = path_1.default.parse(filename).name;
         const componentName = options.formatName ? options.formatName(module) : module;
-        if (filterFilename(filename, module, moduleFilesFilters))
+        if (filterFilename(filename, module, options))
             continue;
         if (options.recursive && fs_1.default.statSync(`${dirName}/${filename}`).isDirectory())
             modulesMap[componentName] = await loadModulesFromDirectory(`${dirName}/${filename}`, options);
