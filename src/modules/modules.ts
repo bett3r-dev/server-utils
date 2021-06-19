@@ -12,8 +12,8 @@ import t from 'simple-transducers';
 //*******************************************
 
 export interface LoadModuleOptions {
-  whiteList?: string[]
-  blackList?: string[]
+  whiteList?: (string|RegExp)[]
+  blackList?: (string|RegExp)[]
   recursive?: boolean
   onImport?: <T extends ComponentModule>(module: any) => T | Promise<T>,
   formatName?: (name: string) => string
@@ -35,8 +35,8 @@ export function toCamelCase(str:string): string {
 }
 
 
-export function filterFilename(filename:string, module:string, {whiteList, blackList}: {whiteList?: RegExp[], blackList?: RegExp[]}) {
-  if (filename === '.DS_Store' || ( whiteList?.length && !whiteList?.some( match => match.test(module) )) || ( blackList?.length && blackList?.some( match => match.test(module) )))
+export function filterFilename(filename:string, module:string, {whiteList, blackList}: {whiteList?: any[], blackList?: any[]}) {
+  if (filename === '.DS_Store' || ( whiteList?.length && !whiteList?.some( match => !match.test ? match === module : match.test(module) )) || ( blackList?.length && blackList?.some( match => !match.test ? match === module : match.test(module) )))
     return true;
 }
 

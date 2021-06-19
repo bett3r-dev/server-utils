@@ -1,6 +1,6 @@
 export interface LoadModuleOptions {
-    whiteList?: string[];
-    blackList?: string[];
+    whiteList?: (string | RegExp)[];
+    blackList?: (string | RegExp)[];
     recursive?: boolean;
     onImport?: <T extends ComponentModule>(module: any) => T | Promise<T>;
     formatName?: (name: string) => string;
@@ -13,8 +13,8 @@ export interface ComponentModule {
 }
 export declare function toCamelCase(str: string): string;
 export declare function filterFilename(filename: string, module: string, { whiteList, blackList }: {
-    whiteList?: RegExp[];
-    blackList?: RegExp[];
+    whiteList?: any[];
+    blackList?: any[];
 }): true | undefined;
 export declare const formatRegExpForFileLists: (options: LoadModuleOptions) => {
     whiteList: RegExp[];

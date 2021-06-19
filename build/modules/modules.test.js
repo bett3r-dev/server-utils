@@ -42,7 +42,7 @@ describe('modules', function () {
         });
         it('Backlist - returns an object with the module name as key and the module', done => {
             const options = {
-                blackList: ['module3'],
+                blackList: [/module3/],
                 recursive: true
             };
             modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderPlain'), options)

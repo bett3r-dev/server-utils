@@ -33,7 +33,7 @@ function toCamelCase(str) {
 }
 exports.toCamelCase = toCamelCase;
 function filterFilename(filename, module, { whiteList, blackList }) {
-    if (filename === '.DS_Store' || (whiteList?.length && !whiteList?.some(match => match.test(module))) || (blackList?.length && blackList?.some(match => match.test(module))))
+    if (filename === '.DS_Store' || (whiteList?.length && !whiteList?.some(match => !match.test ? match === module : match.test(module))) || (blackList?.length && blackList?.some(match => !match.test ? match === module : match.test(module))))
         return true;
 }
 exports.filterFilename = filterFilename;
