@@ -46,12 +46,12 @@ export async function loadModulesFromDirectory<T extends ComponentModule>(dirNam
   for (let filename of components) {
     const module = path.parse(filename).name
     const componentName = options.formatName ? options.formatName(module) : module;
-    if (filterFilename(filename, module, options))
-      continue;
     if (options.recursive && fs.statSync(`${dirName}/${filename}`).isDirectory())
       modulesMap[componentName] = await loadModulesFromDirectory<T>( `${dirName}/${filename}`, options );
     else
-      modulesMap[componentName] = options.onImport ? await options.onImport(await import( `${dirName}/${filename}` ) as T) : await import( `${dirName}/${filename}` ) as T;
+      if (filterFilename(filename, module, options))
+        continue;
+      else modulesMap[componentName] = options.onImport ? await options.onImport(await import( `${dirName}/${filename}` ) as T) : await import( `${dirName}/${filename}` ) as T;
   }
   return modulesMap;
 }

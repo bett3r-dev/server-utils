@@ -42,10 +42,10 @@ async function loadModulesFromDirectory(dirName, options) {
     for (let filename of components) {
         const module = path_1.default.parse(filename).name;
         const componentName = options.formatName ? options.formatName(module) : module;
-        if (filterFilename(filename, module, options))
-            continue;
         if (options.recursive && fs_1.default.statSync(`${dirName}/${filename}`).isDirectory())
             modulesMap[componentName] = await loadModulesFromDirectory(`${dirName}/${filename}`, options);
+        else if (filterFilename(filename, module, options))
+            continue;
         else
             modulesMap[componentName] = options.onImport ? await options.onImport(await Promise.resolve().then(() => __importStar(require(`${dirName}/${filename}`)))) : await Promise.resolve().then(() => __importStar(require(`${dirName}/${filename}`)));
     }
