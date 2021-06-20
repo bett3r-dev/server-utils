@@ -24,7 +24,7 @@ describe('modules', function () {
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.isFunction(modules.module2.function1);
-                chai_1.assert.isFunction(modules.subFolder.module3.function1);
+                chai_1.assert.isFunction(modules.module3.function1);
                 done();
             });
         });
@@ -49,7 +49,7 @@ describe('modules', function () {
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.isFunction(modules.module2.function1);
-                chai_1.assert.notExists(modules.subFolder.module3);
+                chai_1.assert.notExists(modules.module3);
                 done();
             });
         });
@@ -63,7 +63,7 @@ describe('modules', function () {
                 .then(modules => {
                 chai_1.assert.isFunction(modules.module1.function1);
                 chai_1.assert.isFunction(modules.module2.function1);
-                chai_1.assert.isFunction(modules.subFolder.module3.function1);
+                chai_1.assert.isFunction(modules.module3.function1);
                 done();
             });
         });
@@ -78,7 +78,7 @@ describe('modules', function () {
                 .then(modules => {
                 chai_1.assert.isFunction(modules.MODULE1.function1);
                 chai_1.assert.isFunction(modules.MODULE2.function1);
-                chai_1.assert.isFunction(modules.SUBFOLDER.MODULE3.function1);
+                chai_1.assert.isFunction(modules.MODULE3.function1);
                 done();
             });
         });

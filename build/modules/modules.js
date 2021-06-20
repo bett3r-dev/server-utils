@@ -43,7 +43,8 @@ async function loadModulesFromDirectory(dirName, options) {
         const module = path_1.default.parse(filename).name;
         const componentName = options.formatName ? options.formatName(module) : module;
         if (options.recursive && fs_1.default.statSync(`${dirName}/${filename}`).isDirectory())
-            modulesMap[componentName] = await loadModulesFromDirectory(`${dirName}/${filename}`, options);
+            // modulesMap[componentName] = await loadModulesFromDirectory<T>( `${dirName}/${filename}`, options );
+            Object.assign(modulesMap, await loadModulesFromDirectory(`${dirName}/${filename}`, options));
         else if (filterFilename(filename, module, options))
             continue;
         else
