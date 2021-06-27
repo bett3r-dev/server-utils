@@ -1,5 +1,5 @@
 {
-  "name": "server-utils",
+  "name": "@bett3r-dev/utils",
   "version": "1.0.0",
   "main": "build/index.js",
   "license": "MIT",
