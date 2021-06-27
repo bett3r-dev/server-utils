@@ -36,14 +36,13 @@ function filterFilename(filename, module, { whiteList, blackList }) {
         return true;
 }
 exports.filterFilename = filterFilename;
-async function loadModulesFromDirectory(dirName, options) {
+async function loadModulesFromDirectory(dirName, options = {}) {
     const components = fs_1.default.readdirSync(dirName);
     const modulesMap = {};
     for (let filename of components) {
         const module = path_1.default.parse(filename).name;
         const componentName = options.formatName ? options.formatName(module) : module;
         if (options.recursive && fs_1.default.statSync(`${dirName}/${filename}`).isDirectory())
-            // modulesMap[componentName] = await loadModulesFromDirectory<T>( `${dirName}/${filename}`, options );
             Object.assign(modulesMap, await loadModulesFromDirectory(`${dirName}/${filename}`, options));
         else if (filterFilename(filename, module, options))
             continue;

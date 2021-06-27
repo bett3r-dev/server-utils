@@ -40,14 +40,13 @@ export function filterFilename(filename:string, module:string, {whiteList, black
     return true;
 }
 
-export async function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, options: LoadModuleOptions): Promise<Record<string, T>> {
+export async function loadModulesFromDirectory<T extends ComponentModule>(dirName: string, options: LoadModuleOptions = {}): Promise<Record<string, T>> {
   const components = fs.readdirSync( dirName );
   const modulesMap: Record<string, any> = {};
   for (let filename of components) {
     const module = path.parse(filename).name
     const componentName = options.formatName ? options.formatName(module) : module;
     if (options.recursive && fs.statSync(`${dirName}/${filename}`).isDirectory())
-      // modulesMap[componentName] = await loadModulesFromDirectory<T>( `${dirName}/${filename}`, options );
       Object.assign(modulesMap, await loadModulesFromDirectory<T>( `${dirName}/${filename}`, options ));
     else
       if (filterFilename(filename, module, options))
