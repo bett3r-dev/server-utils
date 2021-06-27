@@ -1,6 +1,6 @@
 import { assert } from 'chai';
-import sinon from "sinon";
 import {intervalAtEveryUTC} from './timers';
+import sinon from "sinon";
 
 describe( 'timers', function() {
   describe( 'intervalAtEveryUTC', function() {
@@ -9,7 +9,7 @@ describe( 'timers', function() {
       const setTimeoutSpy = sinon.spy( fakeTimers, 'setTimeout' );
       const setIntervalSpy = sinon.spy( fakeTimers, 'setInterval' );
       intervalAtEveryUTC();
-      assert.equal( new Date( setTimeoutSpy.args[0][1]).getUTCHours(), 0 );
+      assert.equal( new Date( setTimeoutSpy.args[0][1] as number).getUTCHours(), 0 );
       fakeTimers.next();
       assert.equal( setIntervalSpy.args[0][1], 86400000 );
       fakeTimers.restore();
@@ -18,21 +18,21 @@ describe( 'timers', function() {
       const fakeTimers = sinon.useFakeTimers();
       const setTimeoutSpy = sinon.spy( fakeTimers, 'setTimeout' );
       intervalAtEveryUTC({ startTime:'3' });
-      assert.equal( new Date( setTimeoutSpy.args[0][1]).getUTCHours(), 3 );
+      assert.equal( new Date( setTimeoutSpy.args[0][1] as number).getUTCHours(), 3 );
       fakeTimers.restore();
     });
     it( 'starts an interval at specific minutes', () => {
       const fakeTimers = sinon.useFakeTimers();
       const setTimeoutSpy = sinon.spy( fakeTimers, 'setTimeout' );
       intervalAtEveryUTC({ startTime: '00:34' });
-      assert.equal( new Date( setTimeoutSpy.args[0][1]).getMinutes(), 34 );
+      assert.equal( new Date( setTimeoutSpy.args[0][1] as number).getMinutes(), 34 );
       fakeTimers.restore();
     });
     it( 'starts an interval at specific seconds', () => {
       const fakeTimers = sinon.useFakeTimers();
       const setTimeoutSpy = sinon.spy( fakeTimers, 'setTimeout' );
       intervalAtEveryUTC({ startTime: '02:33:34' });
-      assert.equal( new Date( setTimeoutSpy.args[0][1]).getSeconds(), 34 );
+      assert.equal( new Date( setTimeoutSpy.args[0][1] as number).getSeconds(), 34 );
       fakeTimers.restore();
     });
     it( 'creates an interval of the specified value', () => {
@@ -40,7 +40,7 @@ describe( 'timers', function() {
       const setIntervalSpy = sinon.spy( fakeTimers, 'setInterval' );
       const setTimeoutSpy = sinon.spy( fakeTimers, 'setTimeout' );
       intervalAtEveryUTC({ startTime:'3', interval: 60000 });
-      fakeTimers.tick( new Date( setTimeoutSpy.args[0][1]).valueOf());
+      fakeTimers.tick( new Date( setTimeoutSpy.args[0][1] as number).valueOf());
       assert.equal( setIntervalSpy.args[0][1], 60000 );
       fakeTimers.restore();
     });
@@ -70,7 +70,7 @@ describe( 'timers', function() {
       const s = intervalAtEveryUTC({ startTime:'3', interval: 1000 });
       const mapSpy = sinon.spy();
       s.map( mapSpy );
-      fakeTimers.tick( new Date( setTimeoutSpy.args[0][1]).valueOf());
+      fakeTimers.tick( new Date( setTimeoutSpy.args[0][1] as number).valueOf());
       assert.equal( setIntervalSpy.args[0][1], 1000 );
       fakeTimers.next();
       fakeTimers.next();

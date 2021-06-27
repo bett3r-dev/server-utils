@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
-const sinon_1 = __importDefault(require("sinon"));
 const timers_1 = require("./timers");
+const sinon_1 = __importDefault(require("sinon"));
 describe('timers', function () {
     describe('intervalAtEveryUTC', function () {
         it('starts an interval each 24h from 00h', () => {
