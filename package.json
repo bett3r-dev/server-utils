@@ -17,28 +17,28 @@
     "@types/node": "^15.12.5",
     "@types/node-fetch": "^2.5.8",
     "@types/sinon": "^10.0.2",
-    "bett3r-utils": "https://github.com/bett3r-dev/bett3r-utils.git",
+    "bett3r-utils": "bett3r-dev/bett3r-utils",
     "chai": "^4.3.4",
     "crocks": "^0.12.4",
     "editorconfig": "^0.15.3",
-    "eslint": "^7.22.0",
-    "husky": "^6.0.0",
-    "mocha": "^9.0.1",
+    "eslint": "^7.30.0",
+    "husky": "^7.0.0",
+    "mocha": "^9.0.2",
     "node-fetch": "^2.6.1",
     "nyc": "^15.1.0",
     "rambda": "^6.7.0",
-    "simple-transducers": "https://github.com/bett3r-dev/simple-transducers",
+    "simple-transducers": "bett3r-dev/simple-transducers",
     "sinon": "^11.1.1",
     "ts-mocha": "^8.0.0",
     "ts-node": "^10.0.0",
-    "typescript": "^4.2.3"
+    "typescript": "^4.3.5"
   },
   "dependencies": {},
   "peerDependencies": {
     "@tomasruizr/flyd": "^0.3.4",
-    "bett3r-utils": "https://github.com/bett3r-dev/bett3r-utils.git",
+    "bett3r-utils": "bett3r-dev/bett3r-utils",
     "node-fetch": "^2.6.1",
     "rambda": "^6.7.0",
-    "simple-transducers": "https://github.com/bett3r-dev/simple-transducers"
+    "simple-transducers": "bett3r-dev/simple-transducers"
   }
 }
