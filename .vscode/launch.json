@@ -22,11 +22,11 @@
     },
 
     {
-			"type": "node",
+			"type": "pwa-node",
 			"request": "launch",
       "name": "Launch Program TS",
       "skipFiles": ["<node_internals>/**", "node_modules/**"],
-      "program": "${workspaceFolder}/index.ts",
+      "program": "${workspaceFolder}/src/index.ts",
       "runtimeExecutable": "node",
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register/transpile-only", "--trace-warnings"],
       "args": []
