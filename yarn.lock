@@ -315,9 +315,9 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.19.tgz#80f286b515897413c7a35bdda069cc80f2344233"
   integrity sha512-jRJgpRBuY+7izT7/WNXP/LsMO9YonsstuL+xuvycDyESpoDoIAsMd7suwpB4h9oEWB+ZlPTqJJ8EHomzNhwTPQ==
 
-"@types/crocks@https://github.com/tomasruizr/types-crocks.git":
+"@types/crocks@tomasruizr/types-crocks.git":
   version "0.12.3"
-  resolved "https://github.com/tomasruizr/types-crocks.git#93f1a2e41b02890edd85c501466dce24bcfed0e2"
+  resolved "https://codeload.github.com/tomasruizr/types-crocks/tar.gz/93f1a2e41b02890edd85c501466dce24bcfed0e2"
 
 "@types/json5@^0.0.29":
   version "0.0.29"
@@ -486,8 +486,6 @@ balanced-match@^1.0.0:
 bett3r-utils@bett3r-dev/bett3r-utils:
   version "1.0.0"
   resolved "https://codeload.github.com/bett3r-dev/bett3r-utils/tar.gz/4212290b023964e102013fa6fa438ac581da211a"
-  dependencies:
-    "@bett3r-dev/flyd" bett3r-dev/flyd
 
 binary-extensions@^2.0.0:
   version "2.2.0"
