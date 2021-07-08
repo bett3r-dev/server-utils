@@ -1,4 +1,4 @@
-import Stream from '@tomasruizr/flyd';
+import Stream from '@bett3r-dev/flyd';
 
 export function intervalAtEveryUTC( params?: { startTime?: string|boolean; interval?: number; } ) {
   params = params || {};

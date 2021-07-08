@@ -10,7 +10,7 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@tomasruizr/flyd": "^0.3.4",
+    "@bett3r-dev/flyd": "bett3r-dev/flyd",
     "@types/chai": "^4.2.15",
     "@types/crocks": "tomasruizr/types-crocks.git",
     "@types/mocha": "^8.2.1",
@@ -35,7 +35,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@tomasruizr/flyd": "^0.3.4",
+    "@bett3r-dev/flyd": "bett3r-dev/flyd",
     "bett3r-utils": "bett3r-dev/bett3r-utils",
     "node-fetch": "^2.6.1",
     "rambda": "^6.7.0",

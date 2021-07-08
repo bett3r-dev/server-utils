@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.intervalAtEveryUTC = void 0;
-const flyd_1 = __importDefault(require("@tomasruizr/flyd"));
+const flyd_1 = __importDefault(require("@bett3r-dev/flyd"));
 function intervalAtEveryUTC(params) {
     params = params || {};
     let hour, minute, second, intervalStart, hit;
