@@ -82,6 +82,22 @@ describe('modules', function () {
                 done();
             });
         });
+        it('formats the module filename with a function passed in options', done => {
+            const options = {
+                blackList: [],
+                recursive: true,
+                onImport: (module) => module.create({ name: 'tomas' }),
+                formatName: (name) => name.toUpperCase(),
+                formatFilename: (name) => name.toUpperCase()
+            };
+            modules_1.loadModulesFromDirectory(path_1.default.join(__dirname, '../fixtures/modulesFolderFactory'), options)
+                .then(modules => {
+                chai_1.assert.isFunction(modules.MODULE1.function1);
+                chai_1.assert.isFunction(modules.MODULE2.function1);
+                chai_1.assert.isFunction(modules.MODULE3.function1);
+                done();
+            });
+        });
     });
 });
 //# sourceMappingURL=modules.test.js.map

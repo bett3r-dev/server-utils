@@ -40,6 +40,7 @@ async function loadModulesFromDirectory(dirName, options = {}) {
     const components = fs_1.default.readdirSync(dirName);
     const modulesMap = {};
     for (let filename of components) {
+        filename = options.formatFilename ? options.formatFilename(filename) : filename;
         const module = path_1.default.parse(filename).name;
         const componentName = options.formatName ? options.formatName(module) : module;
         if (options.recursive && fs_1.default.statSync(`${dirName}/${filename}`).isDirectory())
