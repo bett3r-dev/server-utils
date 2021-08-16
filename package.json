@@ -1,12 +1,16 @@
 {
   "name": "@bett3r-dev/utils",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
     "build"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bett3r-dev/server-utils.git"
+  },
   "scripts": {
     "test": "NODE_ENV=test nyc ts-mocha \"src/{,**/}*.test.ts\" --exit",
     "build": "tsc -p tsconfig.build.json",
