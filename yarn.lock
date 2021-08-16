@@ -208,9 +208,20 @@
     "@babel/helper-validator-identifier" "^7.14.5"
     to-fast-properties "^2.0.0"
 
-"@bett3r-dev/flyd@bett3r-dev/flyd":
+"@bett3r-dev/bett3r-utils@^0.0.1":
+  version "0.0.1"
+  resolved "https://npm.pkg.github.com/download/@bett3r-dev/bett3r-utils/0.0.1/a9ca8bba0a0d2791a77b8b37397fd9e08a2df83b417cfb47a98825959cdf295d#40288e6919bc3576a774e0b144fffb1d575bb79d"
+  integrity sha512-GilXkbXRhEWlteWB5iUIsA555BkGrULI3a91IxiN1Kt9qzkUtx7wDm3RjzYz/bb1XdaQ+k9wkYixqG0y3XbEoA==
+
+"@bett3r-dev/flyd@^0.3.4":
   version "0.3.4"
-  resolved "https://codeload.github.com/bett3r-dev/flyd/tar.gz/2326d6af5d7d089ab3d948fcfe60a044150dd98d"
+  resolved "https://npm.pkg.github.com/download/@bett3r-dev/flyd/0.3.4/ba3428445e40d863bcfe96671d296b44ef041348292dfa8ef610de7c15569c6c#5c135e90ba4e56704c97b3db435b0824a94a4d82"
+  integrity sha512-KIydA0iaP3M2dLK+z1FzYSYcBELPAfI1PiuviMQZX1y0uo1RxQvWdO0GtUDSV40bWJ6SQYc/4oFaqCahOHQYaw==
+
+"@bett3r-dev/simple-transducers@^1.1.0":
+  version "1.1.0"
+  resolved "https://npm.pkg.github.com/download/@bett3r-dev/simple-transducers/1.1.0/e78d24a7814129a44c79c06bc91ddc84d08ea467d5c64e5ad336f1ac2fb135eb#a9fc05633d7ef2e38a7b8f4d64d2a7e7d213476d"
+  integrity sha512-OCwXLHETrVdVCMAh1rfnxnzE3IqSVi4TKV/PXu8M710lN/pWsFnKmy9OBYvmeiwW2IPAWWhUpGJQz/ZWtgXUHw==
 
 "@eslint/eslintrc@^0.4.2":
   version "0.4.2"
@@ -310,9 +321,9 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.21.tgz#9f35a5643129df132cf3b5c1ec64046ea1af0650"
   integrity sha512-yd+9qKmJxm496BOV9CMNaey8TWsikaZOwMRwPHQIjcOJM9oV+fi9ZMNw3JsVnbEEbo2gRTDnGEBv8pjyn67hNg==
 
-"@types/crocks@tomasruizr/types-crocks.git":
-  version "0.12.3"
-  resolved "https://codeload.github.com/tomasruizr/types-crocks/tar.gz/93f1a2e41b02890edd85c501466dce24bcfed0e2"
+"@types/crocks@bett3r-dev/types-crocks.git":
+  version "0.12.4"
+  resolved "https://codeload.github.com/bett3r-dev/types-crocks/tar.gz/ad9c8eda00804326efb6aed7c520d6fdd726ba3c"
 
 "@types/mocha@^8.2.1":
   version "8.2.3"
@@ -477,12 +488,6 @@ balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
-
-bett3r-utils@bett3r-dev/bett3r-utils:
-  version "1.0.0"
-  resolved "https://codeload.github.com/bett3r-dev/bett3r-utils/tar.gz/4212290b023964e102013fa6fa438ac581da211a"
-  dependencies:
-    "@bett3r-dev/flyd" bett3r-dev/flyd
 
 binary-extensions@^2.0.0:
   version "2.2.0"
@@ -1728,10 +1733,10 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-rambda@^6.7.0:
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/rambda/-/rambda-6.7.0.tgz#50322efdd23a108b61eb6ac4e0868d10dd95b4aa"
-  integrity sha512-qg2atEwhAS4ipYoNfggkIP7qBUbY2OqdW17n25VqZIz5YC1MIwSpIToQ7XacvqSCZz16efM8Y8QKLx+Js1Sybg==
+rambda@^6.9.0:
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/rambda/-/rambda-6.9.0.tgz#17cd0b0c427295e00e8fe12de5bd63884502a9a4"
+  integrity sha512-yosVdGg1hNGkXPzqGiOYNEpXKjEOxzUCg2rB0l+NKdyCaSf4z+i5ojbN0IqDSezMMf71YEglI+ZUTgTffn5afw==
 
 randombytes@^2.1.0:
   version "2.1.0"
@@ -1851,10 +1856,6 @@ signal-exit@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
-
-simple-transducers@bett3r-dev/simple-transducers:
-  version "1.1.0"
-  resolved "https://codeload.github.com/bett3r-dev/simple-transducers/tar.gz/347687ae7badc2c81c6a241c9478e0e0d582aa8e"
 
 sinon@^11.1.1:
   version "11.1.1"

@@ -2,6 +2,10 @@
   "name": "@bett3r-dev/utils",
   "version": "1.0.0",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
   "license": "MIT",
   "scripts": {
     "test": "NODE_ENV=test nyc ts-mocha \"src/{,**/}*.test.ts\" --exit",
@@ -10,35 +14,30 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@bett3r-dev/flyd": "bett3r-dev/flyd",
     "@types/chai": "^4.2.15",
-    "@types/crocks": "tomasruizr/types-crocks.git",
+    "@types/crocks": "bett3r-dev/types-crocks.git",
     "@types/mocha": "^8.2.1",
     "@types/node": "^15.12.5",
     "@types/node-fetch": "^2.5.8",
     "@types/sinon": "^10.0.2",
-    "bett3r-utils": "bett3r-dev/bett3r-utils",
     "chai": "^4.3.4",
-    "crocks": "^0.12.4",
     "editorconfig": "^0.15.3",
     "eslint": "^7.30.0",
     "husky": "^7.0.0",
     "mocha": "^9.0.2",
     "node-fetch": "^2.6.1",
     "nyc": "^15.1.0",
-    "rambda": "^6.7.0",
-    "simple-transducers": "bett3r-dev/simple-transducers",
     "sinon": "^11.1.1",
     "ts-mocha": "^8.0.0",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.5"
   },
-  "dependencies": {},
-  "peerDependencies": {
-    "@bett3r-dev/flyd": "bett3r-dev/flyd",
-    "bett3r-utils": "bett3r-dev/bett3r-utils",
+  "dependencies": {
+    "@bett3r-dev/bett3r-utils": "^0.0.1",
+    "@bett3r-dev/flyd": "^0.3.4",
+    "@bett3r-dev/simple-transducers": "^1.1.0",
+    "crocks": "^0.12.4",
     "node-fetch": "^2.6.1",
-    "rambda": "^6.7.0",
-    "simple-transducers": "bett3r-dev/simple-transducers"
+    "rambda": "^6.9.0"
   }
 }
