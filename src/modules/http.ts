@@ -1,10 +1,10 @@
 import { constant, isTrue } from 'crocks';
 import fetch, { RequestInit, Response } from 'node-fetch';
-import Async from 'crocks/Async';
-import safe from 'crocks/Maybe/safe';
 
-import {promiseToAsync} from 'bett3r-utils';
+import Async from 'crocks/Async';
 import { assoc } from 'rambda';
+import {promiseToAsync} from '@bett3r-dev/bett3r-utils';
+import safe from 'crocks/Maybe/safe';
 
 export interface FetchResponse<T = Record<string, any>> extends Omit<Response,'body'> {
   body: T,

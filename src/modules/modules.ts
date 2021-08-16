@@ -1,11 +1,7 @@
-import * as u from 'bett3r-utils';
-
-import {compose, map, pick} from 'rambda';
-
-import Identity from 'crocks/Identity'
+import {compose} from 'rambda';
 import fs from 'fs';
 import path from 'path';
-import t from 'simple-transducers';
+import t from '@bett3r-dev/simple-transducers';
 
 //*******************************************
 // TS types

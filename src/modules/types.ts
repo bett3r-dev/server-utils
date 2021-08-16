@@ -1,4 +1,4 @@
-import { ensureArray } from "bett3r-utils";
+import { ensureArray } from "@bett3r-dev/bett3r-utils";
 
 export interface Queue<T> {
   length: number
