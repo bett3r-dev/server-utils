@@ -1,6 +1,6 @@
-import { assert } from "chai";
 import * as mod from "./index";
-import * as U from 'bett3r-utils';
+
+import { assert } from "chai";
 
 describe("index", function () {
   it("has elements from all the different modules", () => {
