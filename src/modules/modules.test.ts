@@ -10,7 +10,7 @@ describe( 'modules', function() {
       assert.equal(toCamelCase('hola pana mio'), 'holaPanaMio');
       assert.equal(toCamelCase('hola panaMio'), 'holaPanaMio');
       assert.equal(toCamelCase('Hola_pana-mio'), 'holaPanaMio');
-      assert.equal(toCamelCase('configuration-manager'), 'configurationManager');
+      assert.equal(toCamelCase('configuration-manager'), 'configuration');
       assert.equal(toCamelCase('logger-manager'), 'loggerManager');
       assert.equal(toCamelCase('component1'), 'component1');
     });

@@ -10,3 +10,8 @@ export function execShellCommand( cmd: string, cwd: string = __dirname ) {
     });
   });
 }
+
+export const dieOnError = (logger: {error: (err:any) => void}) => (err: any) => {
+  logger.error(err);
+  process.exit(1);
+}
