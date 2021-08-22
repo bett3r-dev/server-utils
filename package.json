@@ -12,10 +12,12 @@
     "url": "git+https://github.com/bett3r-dev/server-utils.git"
   },
   "scripts": {
-    "test": "NODE_ENV=test nyc ts-mocha \"src/{,**/}*.test.ts\" --exit",
+    "clean": "git clean -fXd -e \\!node_modules -e \\!node_modules/**/*",
+    "prebuild": "yarn clean",
     "build": "tsc -p tsconfig.build.json",
     "prepublishOnly": "npm run build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "NODE_ENV=test nyc ts-mocha \"src/{,**/}*.test.ts\" --exit"
   },
   "devDependencies": {
     "@types/chai": "^4.2.15",
