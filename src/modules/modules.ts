@@ -13,6 +13,7 @@ export interface LoadModuleOptions {
   recursive?: boolean
   onImport?: <T extends ComponentModule>(module: any) => T | Promise<T>,
   formatName?: (name: string) => string
+  formatFileName?: (name: string) => string
 }
 
 export interface ComponentModule{
@@ -40,14 +41,15 @@ export async function loadModulesFromDirectory<T extends ComponentModule>(dirNam
   const components = fs.readdirSync( dirName );
   const modulesMap: Record<string, any> = {};
   for (let filename of components) {
-    const module = path.parse(filename).name
+    const module = path.parse(filename).name;
+    const importFile = options.formatFileName ? options.formatFileName(`${dirName}/${filename}`) : `${dirName}/${filename}`;
     const componentName = options.formatName ? options.formatName(module) : module;
-    if (options.recursive && fs.statSync(`${dirName}/${filename}`).isDirectory())
-      Object.assign(modulesMap, await loadModulesFromDirectory<T>( `${dirName}/${filename}`, options ));
+    if (options.recursive && fs.statSync(importFile).isDirectory())
+      Object.assign(modulesMap, await loadModulesFromDirectory<T>( importFile, options ));
     else
       if (filterFilename(filename, module, options))
         continue;
-      else modulesMap[componentName] = options.onImport ? await options.onImport(await import( `${dirName}/${filename}` ) as T) : await import( `${dirName}/${filename}` ) as T;
+      else modulesMap[componentName] = options.onImport ? await options.onImport(await import( importFile ) as T) : await import( importFile ) as T;
   }
   return modulesMap;
 }

@@ -45,7 +45,7 @@ db.json
 dist
 
 #config
-config
+config/*
 !config/default.yaml
 !config/test.json
 
