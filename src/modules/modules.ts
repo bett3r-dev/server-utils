@@ -31,6 +31,14 @@ export function toCamelCase(str:string): string {
   ) ,str.split(/[_\s\-]/)) as string
 }
 
+export const toKebabCase = (key: string): string =>
+  key
+    .replace(/([\p{Lowercase_Letter}\d])(\p{Uppercase_Letter})/gu, "$1-$2")
+    .replace(
+      /(\p{Uppercase_Letter}+)(\p{Uppercase_Letter}\p{Lowercase_Letter}+)/gu,
+      "$1-$2"
+    )
+    .toLowerCase();
 
 export function filterFilename(filename:string, module:string, {whiteList, blackList}: {whiteList?: any[], blackList?: any[]}) {
   if (filename === '.DS_Store' || ( whiteList?.length && !whiteList?.some( match => !match.test ? match === module : match.test(module) )) || ( blackList?.length && blackList?.some( match => !match.test ? match === module : match.test(module) )))
