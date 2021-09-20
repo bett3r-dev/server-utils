@@ -9,7 +9,7 @@ export * from './modules/http'
 export * from './modules/modules'
 export * from './modules/process'
 export * from './modules/timers'
-export * from './modules/tests'
+export * as tests from './modules/tests'
 export * from './modules/queue'
 
 declare type hashing = typeof import('./modules/hashing');
