@@ -29,3 +29,7 @@ export const fetchAsync = ( url: string, options?: RequestInit ): Async<Response
     headers: { 'content-type': 'application/json; charset=utf-8' },
     ...options,
   }));
+
+export const bigIntSerializer = (key: string, value: any) => {
+  return typeof value === 'bigint' ? value.toString() : value
+}
