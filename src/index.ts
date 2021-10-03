@@ -9,6 +9,7 @@ export * from './modules/http'
 export * from './modules/modules'
 export * from './modules/process'
 export * from './modules/timers'
+export * from './modules/validation'
 export * as tests from './modules/tests'
 export * from './modules/queue'
 
