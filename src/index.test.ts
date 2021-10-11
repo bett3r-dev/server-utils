@@ -29,7 +29,7 @@ describe("index", function () {
     // timers
     assert.exists(mod.intervalAtEveryUTC)
     // tests
-    assert.exists(mod.createFakeServer)
+    assert.exists(mod.tests.createFakeServer)
     // types
     assert.exists(mod.Queue)
   });
