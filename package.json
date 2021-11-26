@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@types/chai": "^4.2.15",
-    "@types/crocks": "bett3r-dev/types-crocks.git",
     "@types/node": "^15.12.5",
     "@types/node-fetch": "^2.5.8",
     "@types/sinon": "^10.0.2",
@@ -36,7 +35,7 @@
     "@bett3r-dev/bett3r-utils": "^0.0.1",
     "@bett3r-dev/flyd": "^0.3.4",
     "@bett3r-dev/simple-transducers": "^1.1.0",
-    "crocks": "^0.12.4",
+    "@bett3r-dev/crocks": "^0.12.4",
     "joi": "^17.4.2",
     "node-fetch": "^2.6.1",
     "rambda": "^6.9.0"

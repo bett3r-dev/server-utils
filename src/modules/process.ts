@@ -1,5 +1,5 @@
-import Async from 'crocks/Async';
-import {exec} from 'child_process';
+import Async from '@bett3r-dev/crocks/Async';
+import { exec } from 'child_process';
 
 /*istanbul ignore next*/
 export function execShellCommand( cmd: string, cwd: string = __dirname ) {
