@@ -1,6 +1,6 @@
 {
   "name": "@bett3r-dev/server-utils",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
