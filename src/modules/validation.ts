@@ -1,10 +1,9 @@
-import Async from '@bett3r-dev/crocks/Async';
-import Result from '@bett3r-dev/crocks/Result';
+import {Async, Result} from '@bett3r-dev/crocks';
 import { createError, EndpointActionParams, EndpointSchemas, ValidationError } from '@bett3r-dev/server-core';
 import joi from 'joi';
 
 export const validateResult = <T>(schema: joi.Schema<T>, options: joi.ValidationOptions = {abortEarly:false})=> (value:T): Result<T> => 
-  Result.of(schema.validate(value, options))
+  Result.Ok(schema.validate(value, options))
     .chain((result) => result.error
       ? Result.Err(createError(ValidationError, result.error.details)) 
       : Result.Ok(result.value))  
