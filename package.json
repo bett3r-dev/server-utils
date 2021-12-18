@@ -33,9 +33,10 @@
   },
   "dependencies": {
     "@bett3r-dev/bett3r-utils": "^0.0.1",
+    "@bett3r-dev/crocks": "^0.12.5",
     "@bett3r-dev/flyd": "^0.3.4",
     "@bett3r-dev/simple-transducers": "^1.1.0",
-    "@bett3r-dev/crocks": "^0.12.5",
+    "constant-case": "^3.0.4",
     "joi": "^17.4.2",
     "node-fetch": "^2.6.1",
     "rambda": "^6.9.0"

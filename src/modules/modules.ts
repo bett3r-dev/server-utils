@@ -2,6 +2,7 @@ import {compose} from 'rambda';
 import fs from 'fs';
 import path from 'path';
 import t from '@bett3r-dev/simple-transducers';
+export {constantCase as toConstantCase} from 'constant-case'
 
 //*******************************************
 // TS types
