@@ -1,4 +1,4 @@
-import Async from '@bett3r-dev/crocks/Async';
+import { Async } from '@bett3r-dev/crocks';
 import { exec } from 'child_process';
 
 /*istanbul ignore next*/

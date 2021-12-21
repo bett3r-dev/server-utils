@@ -1,7 +1,5 @@
 import { promiseToAsync } from '@bett3r-dev/bett3r-utils';
-import { isTrue } from '@bett3r-dev/crocks';
-import Async from '@bett3r-dev/crocks/Async';
-import safe from '@bett3r-dev/crocks/Maybe/safe';
+import { Async, isTrue, safe } from '@bett3r-dev/crocks';
 import fetch, { RequestInit, Response } from 'node-fetch';
 import { assoc } from 'rambda';
 
