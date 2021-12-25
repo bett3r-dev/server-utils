@@ -14,9 +14,7 @@
   "scripts": {
     "clean": "git clean -fXd -e \\!node_modules -e \\!node_modules/**/* -e \\!config/*",
     "prebuild": "yarn clean",
-    "build": "tsc -p tsconfig.build.json",
-    "build:local": "tsc -p tsconfig.local.json",
-    "prepublishOnly": "npm run build"
+    "build": "tsc -p tsconfig.local.json"
   },
   "devDependencies": {
     "@types/chai": "^4.2.15",
