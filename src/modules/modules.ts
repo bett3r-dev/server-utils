@@ -42,7 +42,12 @@ export const toKebabCase = (key: string): string =>
     .toLowerCase();
 
 export function filterFilename(filename:string, module:string, {whiteList, blackList}: {whiteList?: any[], blackList?: any[]}) {
-  if (filename === '.DS_Store' || ( whiteList?.length && !whiteList?.some( match => !match.test ? match === module : match.test(module) )) || ( blackList?.length && blackList?.some( match => !match.test ? match === module : match.test(module) )))
+  if (
+    filename === '.git' || 
+    filename === '.DS_Store' || 
+    ( whiteList?.length && !whiteList?.some( match => !match.test ? match === module : match.test(module) )) || 
+    ( blackList?.length && blackList?.some( match => !match.test ? match === module : match.test(module) ))
+  )
     return true;
 }
 
