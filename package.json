@@ -1,6 +1,6 @@
 {
   "name": "@bett3r-dev/server-utils",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
@@ -30,8 +30,8 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@bett3r-dev/bett3r-utils": "^2.0.1",
-    "@bett3r-dev/crocks": "^2.0.1",
+    "@bett3r-dev/bett3r-utils": "^2.0.2",
+    "@bett3r-dev/crocks": "^2.0.2",
     "@bett3r-dev/flyd": "^0.3.5",
     "@bett3r-dev/simple-transducers": "^1.1.0",
     "constant-case": "^3.0.4",
