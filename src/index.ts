@@ -1,7 +1,7 @@
 import T from '@bett3r-dev/simple-transducers';
 export const Transducers = T
 export * from 'rambda';
-export {reduce, map} from '@bett3r-dev/bett3r-utils';
+export {reduce, map, assocPath} from '@bett3r-dev/bett3r-utils';
 export * from '@bett3r-dev/bett3r-utils';
 
 export * from './modules/hashing'
@@ -24,6 +24,6 @@ export declare interface ServerUtils extends hashing, http, modules, process, ti
 declare type transducers = typeof import('@bett3r-dev/simple-transducers').default;
 declare type rambda = typeof import('rambda');
 declare type utils = typeof import('@bett3r-dev/bett3r-utils');
-export declare interface Utils extends Omit<rambda, 'reduce' | 'map'>, utils, ServerUtils {
+export declare interface Utils extends Omit<rambda, 'reduce' | 'map'| 'assocPath'>, utils, ServerUtils {
   Transducers: transducers
 }
