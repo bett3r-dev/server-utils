@@ -2,7 +2,8 @@ import {compose} from 'rambda';
 import fs from 'fs';
 import path from 'path';
 import t from '@bett3r-dev/simple-transducers';
-export {constantCase as toConstantCase} from 'constant-case'
+export {constantCase as toConstantCase, } from 'change-case';
+export {titleCase as toTitleCase, } from 'title-case';
 
 //*******************************************
 // TS types
@@ -11,7 +12,7 @@ export {constantCase as toConstantCase} from 'constant-case'
 export interface LoadModuleOptions {
   whiteList?: (string|RegExp)[]
   blackList?: (string|RegExp)[]
-  fileFilterPredicate?: (file: string, filePath: string, module: string) => boolean,
+  fileRejectPredicate?: (file: string, filePath: string, module: string) => boolean,
   recursive?: boolean
   onImport?: <T extends ComponentModule>(module: any) => T | Promise<T>,
   formatName?: (name: string) => string
@@ -42,9 +43,9 @@ export const toKebabCase = (key: string): string =>
     )
     .toLowerCase();
 
-export function filterFilename(filename:string, filePath:string, module:string, {whiteList, blackList, fileFilterPredicate}: LoadModuleOptions) {
-  if (fileFilterPredicate){
-    return fileFilterPredicate(filename, filePath, module)
+export function rejectFilename(filename:string, filePath:string, module:string, {whiteList, blackList, fileRejectPredicate}: LoadModuleOptions) {
+  if (fileRejectPredicate){
+    return fileRejectPredicate(filename, filePath, module)
   }
   if (
     filename === '.git' || 
@@ -66,7 +67,7 @@ export async function loadModulesFromDirectory<T extends ComponentModule>(dirNam
     if (options.recursive && fs.statSync(importFile).isDirectory())
       Object.assign(modulesMap, await loadModulesFromDirectory<T>( importFile, options ));
     else
-      if (filterFilename(filename, filePath, module, options))
+      if (rejectFilename(filename, filePath, module, options))
         continue;
       else modulesMap[componentName] = options.onImport ? await options.onImport(await import( importFile ) as T) : await import( importFile ) as T;
   }
