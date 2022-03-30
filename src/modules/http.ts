@@ -9,16 +9,16 @@ export interface FetchResponse<T = Record<string, any>> extends Omit<Response,'b
 }
 
 const parseResponseBody = (response: Response, method: 'reject'| 'resolve') =>
-   response.json()
+  response.json()
     .then( body => Promise[method](assoc('body', body, response)))
 
 export const processFetchResponse = (response: Response): Async<Response> =>
-  promiseToAsync(
+  promiseToAsync<Response>(
     safe(isTrue, response.ok)
       .either(
         () => parseResponseBody(response, 'reject'),
         () => parseResponseBody(response, 'resolve'),
-      )
+      ) as unknown as Promise<Response>
   )
 
 export const fetchAsync = ( url: string, options?: RequestInit ): Async<Response> =>
