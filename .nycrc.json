@@ -1,6 +1,0 @@
-{
-  "exclude": [
-    "src/fixtures/{,**}/*.ts",
-    "src/fixtures/{,**}/*.js"
-  ]
-}
