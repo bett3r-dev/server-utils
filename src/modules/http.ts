@@ -8,9 +8,10 @@ export interface FetchResponse<T = Record<string, any>> extends Omit<Response,'b
   body: T,
 }
 
-const parseResponseBody = (response: Response, method: 'reject'| 'resolve') =>
+const parseResponseBody = (response: Response, method: 'reject'| 'resolve'): Promise<Response> =>
    response.json()
-    .then( body => Promise[method](assoc('body', body, response)))
+    // .then( body => Promise[method](assoc('body', body, response)))
+    .then( body => Promise[method as 'resolve'](assoc('body', body, response)))
 
 export const processFetchResponse = (response: Response): Async<Response> =>
   promiseToAsync(
