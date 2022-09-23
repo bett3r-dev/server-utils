@@ -1,6 +1,6 @@
 import http from 'http';
 import {map} from 'rambda';
-import sinon from 'sinon';
+// import sinon from 'sinon';
 
 export interface fakeResponse {
   code?: number
@@ -9,19 +9,19 @@ export interface fakeResponse {
 }
 
 export const loggerMock = {
-  silly: sinon.spy(),
-  debug: sinon.spy(),
-  log: sinon.spy(),
-  info: sinon.spy(),
-  warn: sinon.spy(),
-  error: sinon.spy(),
+  silly: ()=>{},
+  debug: ()=>{},
+  log: ()=>{},
+  info: ()=>{},
+  warn: ()=>{},
+  error: ()=>{},
 }
 
 export const hookMock = {
-  onHook: sinon.spy(),
-  onHookAsync: sinon.spy(),
-  dispatchHook: sinon.spy(),
-  dispatchHookAsync: sinon.spy(),
+  onHook: ()=>{},
+  onHookAsync: ()=>{},
+  dispatchHook: ()=>{},
+  dispatchHookAsync: ()=>{},
 }
 
 /**
